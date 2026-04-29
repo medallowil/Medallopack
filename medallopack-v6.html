@@ -1,0 +1,2671 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07090c">
+  <meta name="description" id="metaDesc" content="Páginas web profesionales y diseño digital en Medellín, Colombia.">
+  <meta name="keywords" id="metaKeywords" content="páginas web, diseño digital, Medellín, Colombia">
+  <meta property="og:title" id="ogTitle" content="MedalloPack">
+  <meta property="og:description" id="ogDesc" content="Páginas web profesionales y diseño digital.">
+  <meta property="og:image" id="ogImage" content="">
+  <meta property="og:type" content="website">
+  <title>MedalloPack - Páginas Web y Diseño Digital</title>
+  <script id="gaScript"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --accent:  #ff8800;
+      --green:   #22c55e;
+      --dark:    #07090c;
+      --card:    #0d1117;
+      --card2:   #111720;
+      --border:  rgba(0,212,255,0.10);
+      --border2: rgba(255,255,255,0.07);
+      --text:    #e2e8f0;
+      --muted:   #64748b;
+      --radius:  20px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    ::-webkit-scrollbar{width:4px}
+    ::-webkit-scrollbar-track{background:var(--dark)}
+    ::-webkit-scrollbar-thumb{background:var(--primary);border-radius:2px}
+    img{max-width:100%;display:block}
+    a{text-decoration:none}
+
+    /* ═══════════════ ANNOUNCEMENT BANNER ═══════════════ */
+    .ann-banner{position:fixed;left:0;right:0;z-index:1050;display:flex;align-items:center;justify-content:center;gap:12px;padding:10px 20px;font-size:0.88rem;font-weight:600;box-shadow:0 2px 12px rgba(0,0,0,0.25);transition:all 0.35s;flex-wrap:wrap;min-height:42px}
+    .ann-banner.pos-top{top:0}
+    .ann-banner.pos-bottom{bottom:0;top:auto}
+    .ann-banner-text{flex:1;min-width:0;text-align:center;font-family:'DM Sans',sans-serif;line-height:1.4}
+    .ann-banner-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 18px;border-radius:8px;font-weight:700;font-size:0.8rem;border:2px solid currentColor;white-space:nowrap;cursor:pointer;transition:all 0.2s;text-decoration:none;flex-shrink:0}
+    .ann-banner-btn:hover{opacity:0.85;transform:translateY(-1px)}
+    .ann-banner-close{flex-shrink:0;background:none;border:none;cursor:pointer;font-size:1.1rem;opacity:0.7;padding:2px 6px;border-radius:4px;transition:opacity 0.2s;color:inherit}
+    .ann-banner-close:hover{opacity:1;background:rgba(0,0,0,0.12)}
+    /* offset header when banner is on top */
+    body.has-ann-top header{top:42px}
+    body.has-ann-top .mobile-nav{top:110px}
+    body.has-ann-bottom{padding-bottom:42px}
+
+    /* ═══════════════ POPUP ═══════════════ */
+    .popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(10px);z-index:20000;align-items:center;justify-content:center;padding:16px;animation:fadeIn 0.3s ease}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .popup-overlay.show{display:flex}
+    .popup-box{background:var(--card2);border:1px solid var(--border);border-radius:24px;padding:0;max-width:480px;width:100%;position:relative;overflow:hidden;animation:popIn 0.38s cubic-bezier(0.34,1.56,0.64,1)}
+    @keyframes popIn{from{opacity:0;transform:scale(0.82) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+    .popup-close-btn{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:0.9rem;transition:all 0.2s;z-index:2}
+    .popup-close-btn:hover{background:rgba(255,255,255,0.15);transform:scale(1.1)}
+    .popup-img-wrap{width:100%;height:180px;overflow:hidden;position:relative}
+    .popup-img-wrap img{width:100%;height:100%;object-fit:cover}
+    .popup-img-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(to bottom,transparent,var(--card2));pointer-events:none}
+    .popup-body{padding:28px 32px 32px}
+    .popup-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,212,255,0.09);border:1px solid rgba(0,212,255,0.22);color:var(--primary);padding:4px 14px;border-radius:100px;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px}
+    .popup-title{font-family:'Syne',sans-serif;font-size:1.45rem;font-weight:800;letter-spacing:-0.5px;margin-bottom:10px;line-height:1.2}
+    .popup-msg{color:var(--muted);font-size:0.9rem;line-height:1.7;margin-bottom:22px}
+    .popup-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .popup-actions a,.popup-actions button{flex:1;min-width:120px;text-align:center;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+
+    /* ═══════════════ HEADER ═══════════════ */
+    header{
+      position:fixed;top:0;width:100%;
+      background:rgba(7,9,12,0.85);
+      backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+      border-bottom:1px solid var(--border);
+      z-index:1000;padding:0 5%;height:68px;
+      display:flex;justify-content:space-between;align-items:center;
+    }
+    .logo-container{display:flex;align-items:center;gap:12px;flex-shrink:0}
+    .logo-img{
+      width:42px;height:42px;border-radius:10px;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Syne',sans-serif;font-weight:800;font-size:0.75rem;
+      color:#000;letter-spacing:-0.5px;flex-shrink:0;
+      overflow:hidden;position:relative;transition:all 0.3s;
+    }
+    .logo-img img{width:100%;height:100%;object-fit:contain;border-radius:10px}
+    .logo-img.has-img{background:transparent;border:1px solid var(--border)}
+    .footer-logo-img{width:44px;height:44px;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,var(--primary),var(--accent));display:inline-flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.8rem;color:#000;margin-bottom:8px;vertical-align:middle}
+    .footer-logo-img img{width:100%;height:100%;object-fit:contain}
+    .footer-logo-img.has-img{background:transparent;border:1px solid var(--border)}
+    .logo-text{
+      font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;
+      letter-spacing:-0.5px;
+      background:linear-gradient(90deg,#fff 55%,var(--primary));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    nav{display:flex;align-items:center;gap:2px}
+    nav a{color:var(--muted);font-size:0.88rem;font-weight:500;padding:8px 13px;border-radius:8px;transition:all 0.2s}
+    nav a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+    .nav-cta{background:linear-gradient(90deg,var(--primary),var(--accent))!important;color:#000!important;font-weight:700!important;border-radius:10px!important;padding:9px 20px!important}
+    .nav-cta:hover{opacity:0.88;transform:translateY(-1px)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border-radius:8px;border:1px solid var(--border2);background:rgba(255,255,255,0.03);transition:all 0.2s;z-index:1002}
+    .hamburger:hover{background:rgba(255,255,255,0.07)}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s cubic-bezier(0.23,1,0.32,1)}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mobile-nav{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(7,9,12,0.97);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);z-index:999;padding:20px 5% 28px;flex-direction:column;gap:4px;transform:translateY(-8px);opacity:0;transition:all 0.28s cubic-bezier(0.23,1,0.32,1)}
+    .mobile-nav.open{transform:translateY(0);opacity:1}
+    .mobile-nav a{color:var(--muted);font-size:1rem;font-weight:500;padding:13px 16px;border-radius:12px;transition:all 0.2s;border:1px solid transparent}
+    .mobile-nav a:hover{color:var(--text);background:rgba(255,255,255,0.04);border-color:var(--border2)}
+    .mobile-nav .nav-cta{margin-top:8px;background:linear-gradient(90deg,var(--primary),var(--accent))!important;color:#000!important;font-weight:700!important;text-align:center;border:none!important}
+
+    /* ═══════════════ HERO ═══════════════ */
+    .hero{min-height:100svh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding-top:68px}
+    .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&q=80') center/cover no-repeat;filter:brightness(0.08) saturate(0.2);animation:heroZoom 22s ease-in-out infinite alternate}
+    @keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.07)}}
+    .hero-grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+    .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:0.12;animation:floatOrb 10s ease-in-out infinite alternate;pointer-events:none}
+    .orb-1{width:min(600px,90vw);height:min(600px,90vw);background:var(--primary);top:-150px;left:-150px}
+    .orb-2{width:min(500px,80vw);height:min(500px,80vw);background:var(--accent);bottom:-100px;right:-80px;animation-delay:-5s}
+    .orb-3{width:min(300px,60vw);height:min(300px,60vw);background:#7c3aed;top:40%;right:10%;animation-delay:-3s;opacity:0.06}
+    @keyframes floatOrb{from{transform:translate(0,0)}to{transform:translate(28px,18px) scale(1.08)}}
+    .hero-content{position:relative;z-index:2;max-width:920px;width:100%;padding:40px clamp(16px,5vw,40px);animation:fadeUp 0.9s ease both}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,255,0.07);border:1px solid rgba(0,212,255,0.22);color:var(--primary);padding:7px 20px;border-radius:100px;font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:32px;backdrop-filter:blur(8px);box-shadow:0 0 20px rgba(0,212,255,0.08)}
+    .hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,9vw,7rem);font-weight:800;line-height:0.93;letter-spacing:-3px;background:linear-gradient(135deg,#fff 25%,rgba(255,255,255,0.85) 45%,var(--primary) 65%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:28px;filter:drop-shadow(0 0 40px rgba(0,212,255,0.15));overflow-wrap:break-word;word-break:break-word;max-width:100%}
+    .hero p{font-size:clamp(0.95rem,2.5vw,1.18rem);color:#94a3b8;max-width:520px;margin:0 auto 44px;line-height:1.8}
+    .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--primary),var(--accent));color:#000;font-weight:700;font-size:0.93rem;padding:14px 30px;border-radius:14px;transition:all 0.3s;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;position:relative;overflow:hidden}
+    .btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);transform:translateX(-100%);transition:transform 0.4s}
+    .btn-primary:hover::after{transform:translateX(100%)}
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,212,255,0.35)}
+    .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.14);color:var(--text);font-weight:600;font-size:0.93rem;padding:14px 30px;border-radius:14px;transition:all 0.3s;backdrop-filter:blur(8px)}
+    .btn-ghost:hover{background:rgba(255,255,255,0.1);transform:translateY(-2px);border-color:rgba(255,255,255,0.25)}
+    .hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:7px;color:var(--muted);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;animation:scrollBounce 2.4s ease-in-out infinite}
+    @keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+    /* ═══════════════ STATS ═══════════════ */
+    .stats-bar{background:var(--card2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 5%;position:relative;overflow:hidden}
+    .stats-bar::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(0,212,255,0.04),transparent 70%);pointer-events:none}
+    .stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .stat-item{text-align:center;padding:16px;border-radius:16px;transition:all 0.3s;cursor:default}
+    .stat-item:hover{background:rgba(0,212,255,0.04)}
+    .stat-num{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+    .stat-label{font-size:0.78rem;color:var(--muted);margin-top:6px;line-height:1.4}
+
+    /* ═══════════════ SECTIONS ═══════════════ */
+    .section{padding:clamp(60px,8vw,110px) 5%;max-width:1400px;margin:0 auto}
+    .section-tag{display:inline-flex;align-items:center;gap:9px;color:var(--primary);font-size:0.73rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px}
+    .section-tag::before{content:'';display:block;width:18px;height:2px;background:var(--primary);border-radius:1px}
+    .section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4.5vw,3.2rem);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:14px}
+    .section-title span{background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .section-sub{color:var(--muted);max-width:480px;line-height:1.75;margin-bottom:52px;font-size:0.95rem}
+
+    /* ═══════════════ FEATURES ═══════════════ */
+    .features-strip{padding:0 5% clamp(60px,8vw,100px)}
+    .features-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+    .feature-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:30px 26px;transition:all 0.35s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden}
+    .feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,212,255,0.3),transparent);opacity:0;transition:opacity 0.3s}
+    .feature-card:hover{border-color:rgba(0,212,255,0.3);transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,0.4),0 0 20px rgba(0,212,255,0.04)}
+    .feature-card:hover::before{opacity:1}
+    .feature-icon{width:48px;height:48px;border-radius:14px;margin-bottom:18px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.18);display:flex;align-items:center;justify-content:center;font-size:1.15rem;color:var(--primary);transition:all 0.3s}
+    .feature-card:hover .feature-icon{background:rgba(0,212,255,0.14);transform:scale(1.08)}
+    .feature-card h4{font-family:'Syne',sans-serif;font-size:1.02rem;font-weight:700;margin-bottom:9px}
+    .feature-card p{font-size:0.85rem;color:var(--muted);line-height:1.65}
+
+    /* ═══════════════ PRODUCT GRID ═══════════════ */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));gap:26px}
+    .product-card{background:var(--card);border-radius:22px;overflow:hidden;border:1px solid var(--border);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);animation:cardIn 0.5s ease both;position:relative}
+    .product-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,212,255,0.03),transparent 60%);opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:1}
+    .product-card:hover{transform:translateY(-12px);border-color:rgba(0,212,255,0.35);box-shadow:0 32px 64px rgba(0,0,0,0.6),0 0 40px rgba(0,212,255,0.08),inset 0 1px 0 rgba(255,255,255,0.05)}
+    .product-card:hover::before{opacity:1}
+    @keyframes cardIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .card-img-wrap{position:relative;height:220px;overflow:hidden}
+    .card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.7s cubic-bezier(0.23,1,0.32,1)}
+    .card-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(13,17,23,0.8));pointer-events:none}
+    .product-card:hover .card-img-wrap img{transform:scale(1.1)}
+    .card-badge{position:absolute;top:14px;left:14px;background:rgba(0,0,0,0.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(0,212,255,0.2);color:var(--primary);font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:100px;z-index:2}
+    .card-demo-badge{position:absolute;top:14px;right:14px;background:rgba(0,212,255,0.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(0,212,255,0.3);color:var(--primary);font-size:0.68rem;font-weight:700;padding:5px 12px;border-radius:100px;display:flex;align-items:center;gap:5px;z-index:2;animation:demoPulse 2s ease-in-out infinite}
+    @keyframes demoPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,212,255,0.2)}50%{box-shadow:0 0 0 4px rgba(0,212,255,0)}}
+    .product-info{padding:24px;position:relative;z-index:2}
+    .product-info h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:9px;letter-spacing:-0.3px;line-height:1.3}
+    .product-info p{font-size:0.85rem;color:var(--muted);line-height:1.7;margin-bottom:18px}
+    .price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+    .price{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;color:var(--accent);letter-spacing:-1px;line-height:1}
+    .price-usd{font-size:0.78rem;color:var(--muted);background:rgba(255,255,255,0.06);padding:3px 9px;border-radius:6px;border:1px solid var(--border2)}
+    .card-actions{display:flex;gap:10px}
+    .btn-buy{flex:1;padding:12px 14px;background:linear-gradient(90deg,var(--primary),var(--accent));color:#000;font-weight:700;font-size:0.85rem;border:none;border-radius:12px;cursor:pointer;transition:all 0.25s;display:flex;align-items:center;justify-content:center;gap:6px;font-family:'DM Sans',sans-serif;position:relative;overflow:hidden}
+    .btn-buy::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);transform:translateX(-100%);transition:transform 0.35s}
+    .btn-buy:hover::after{transform:translateX(100%)}
+    .btn-buy:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,212,255,0.32)}
+    .btn-demo{padding:12px 16px;white-space:nowrap;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--text);font-weight:600;font-size:0.85rem;border-radius:12px;cursor:pointer;transition:all 0.25s;display:flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif}
+    .btn-demo:hover{background:rgba(0,212,255,0.08);border-color:rgba(0,212,255,0.35);color:var(--primary);transform:translateY(-2px)}
+
+    /* ═══════════════ PROCESS ═══════════════ */
+    .process-section{background:var(--card2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:clamp(60px,8vw,110px) 5%}
+    .process-inner{max-width:1100px;margin:0 auto}
+    .process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin-top:52px;position:relative}
+    .process-step{text-align:center;padding:28px 20px;position:relative}
+    .step-num{width:56px;height:56px;border-radius:50%;margin:0 auto 18px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:#000}
+    .process-step h4{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:8px}
+    .process-step p{font-size:0.83rem;color:var(--muted);line-height:1.6;max-width:180px;margin:0 auto}
+
+    /* ═══════════════ CTA ═══════════════ */
+    .cta-band{padding:clamp(60px,8vw,100px) 5%}
+    .cta-inner{max-width:900px;margin:0 auto;background:linear-gradient(135deg,rgba(0,212,255,0.07),rgba(255,136,0,0.05));border:1px solid rgba(0,212,255,0.18);border-radius:28px;padding:clamp(44px,6vw,76px) clamp(28px,5vw,64px);text-align:center;position:relative;overflow:hidden}
+    .cta-inner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(0,212,255,0.08),transparent 65%);pointer-events:none}
+    .cta-inner::after{content:'';position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);width:200px;height:80px;background:rgba(0,212,255,0.12);border-radius:50%;filter:blur(40px);pointer-events:none}
+    .cta-inner h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.9rem);font-weight:800;letter-spacing:-1px;margin-bottom:16px;position:relative}
+    .cta-inner p{color:var(--muted);margin-bottom:36px;line-height:1.75;font-size:0.96rem;position:relative;max-width:500px;margin-left:auto;margin-right:auto}
+    .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+
+    /* ═══════════════ MODALS ═══════════════ */
+    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);backdrop-filter:blur(16px);z-index:10000;align-items:center;justify-content:center;padding:16px}
+    .modal-content{width:100%;max-width:1200px;background:var(--card2);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);animation:slideUp 0.28s ease;display:flex;flex-direction:column;max-height:calc(100svh - 32px)}
+    @keyframes slideUp{from{opacity:0;transform:translateY(24px) scale(0.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .modal-header{padding:14px 20px;background:rgba(255,255,255,0.02);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+    .modal-header h3{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;display:flex;align-items:center;gap:10px}
+    .live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:livePulse 1.5s ease-in-out infinite;flex-shrink:0}
+    @keyframes livePulse{0%,100%{opacity:1}50%{opacity:0.35}}
+    .close-btn{width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(255,51,102,0.1);border:1px solid rgba(255,51,102,0.25);color:#ff3366;border-radius:8px;cursor:pointer;font-size:0.95rem;transition:all 0.2s;flex-shrink:0}
+    .close-btn:hover{background:rgba(255,51,102,0.22)}
+    .modal-body{flex:1;background:white;min-height:0}
+    iframe{width:100%;height:100%;border:none}
+    .buy-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);backdrop-filter:blur(16px);z-index:10001;align-items:center;justify-content:center;padding:16px}
+    .buy-modal-content{background:var(--card2);border:1px solid var(--border);border-radius:24px;padding:clamp(28px,5vw,44px);max-width:400px;width:100%;text-align:center;animation:slideUp 0.28s ease}
+    .buy-modal-icon{width:60px;height:60px;border-radius:16px;margin:0 auto 18px;background:linear-gradient(135deg,rgba(0,212,255,0.12),rgba(255,136,0,0.08));border:1px solid rgba(0,212,255,0.2);display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+    .buy-modal-content h3{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;margin-bottom:8px}
+    .buy-modal-content p{color:var(--muted);margin-bottom:26px;font-size:0.86rem;line-height:1.6}
+    .pay-options{display:flex;flex-direction:column;gap:10px}
+    .pay-btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:12px;font-weight:700;font-size:0.9rem;cursor:pointer;border:none;transition:all 0.2s;font-family:'DM Sans',sans-serif}
+    .pay-paypal{background:#0070ba;color:white}.pay-paypal:hover{background:#005ea6;transform:translateY(-2px)}
+    .pay-wompi{background:#6C47FF;color:white}.pay-wompi:hover{background:#5736dd;transform:translateY(-2px)}
+    .pay-whatsapp{background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.25)!important;color:#22c55e}.pay-whatsapp:hover{background:rgba(34,197,94,0.2);transform:translateY(-2px)}
+    .pay-contact{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1)!important;color:var(--text)}.pay-contact:hover{background:rgba(255,255,255,0.09)}
+    .btn-cancel{margin-top:16px;background:none;border:none;color:var(--muted);font-size:0.82rem;cursor:pointer;transition:color 0.2s;font-family:'DM Sans',sans-serif;padding:6px 12px;border-radius:6px}
+    .btn-cancel:hover{color:var(--text)}
+
+    /* ═══════════════ EMPTY STATE ═══════════════ */
+    .empty-state{text-align:center;padding:80px 20px;color:var(--muted);grid-column:1/-1}
+    .empty-state i{font-size:2.8rem;margin-bottom:16px;display:block;opacity:0.25}
+    .empty-state p{font-size:0.92rem}
+
+    /* ═══════════════ FOOTER ═══════════════ */
+    footer{background:#050708;border-top:1px solid var(--border);padding:clamp(52px,7vw,80px) 5% clamp(32px,4vw,48px);text-align:center;position:relative;overflow:hidden}
+    footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:1px;background:linear-gradient(90deg,transparent,rgba(0,212,255,0.3),transparent)}
+    .footer-logo{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:10px}
+    .footer-sub{color:var(--muted);font-size:0.83rem;margin-bottom:32px}
+    .footer-links{display:flex;gap:20px;justify-content:center;margin-bottom:36px;flex-wrap:wrap}
+    .footer-links a{color:var(--muted);font-size:0.83rem;transition:color 0.2s;padding:4px 0;border-bottom:1px solid transparent}
+    .footer-links a:hover{color:var(--primary);border-bottom-color:rgba(0,212,255,0.3)}
+    .footer-social{display:flex;gap:10px;justify-content:center;margin-bottom:36px}
+    .social-btn{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,0.04);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:0.95rem;transition:all 0.25s}
+    .social-btn:hover{background:rgba(0,212,255,0.1);border-color:rgba(0,212,255,0.35);color:var(--primary);transform:translateY(-3px)}
+    .copyright{color:var(--muted);font-size:0.78rem;cursor:pointer;padding:10px;border-radius:8px;transition:color 0.2s;user-select:none;display:inline-block}
+    .copyright:hover{color:var(--text)}
+
+    /* ═══════════════ TOAST ═══════════════ */
+    .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:rgba(7,22,12,0.95);border:1px solid rgba(34,197,94,0.38);color:var(--green);padding:11px 22px;border-radius:10px;font-size:0.85rem;font-weight:600;z-index:99999;white-space:nowrap;backdrop-filter:blur(10px);animation:toastIn 0.3s ease;max-width:calc(100vw - 32px);text-align:center}
+    @keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(12px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+    /* ═══════════════ WHATSAPP FLOAT ═══════════════ */
+    .wa-float{position:fixed;bottom:28px;right:24px;z-index:9000;width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:white;box-shadow:0 8px 24px rgba(37,211,102,0.4);transition:all 0.3s;animation:waFloat 3s ease-in-out infinite alternate}
+    .wa-float:hover{transform:scale(1.1);box-shadow:0 12px 32px rgba(37,211,102,0.55)}
+    @keyframes waFloat{from{box-shadow:0 8px 24px rgba(37,211,102,0.4)}to{box-shadow:0 12px 32px rgba(37,211,102,0.6)}}
+    .wa-tooltip{position:absolute;right:64px;top:50%;transform:translateY(-50%);background:rgba(7,9,12,0.92);border:1px solid var(--border);color:var(--text);font-size:0.78rem;font-weight:600;padding:6px 12px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.2s;backdrop-filter:blur(8px)}
+    .wa-float:hover .wa-tooltip{opacity:1}
+
+    /* ═══════════════ SCROLL PROGRESS BAR ═══════════════ */
+    .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--primary),var(--accent));z-index:2001;border-radius:0 2px 2px 0;transition:width 0.08s linear;pointer-events:none}
+
+    /* ═══════════════ BACK TO TOP ═══════════════ */
+    .back-top{position:fixed;bottom:90px;left:20px;width:44px;height:44px;border-radius:12px;background:rgba(7,9,12,0.88);border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:8900;transition:all 0.3s;opacity:0;transform:translateY(12px) scale(0.9);pointer-events:none;backdrop-filter:blur(12px);font-size:0.9rem;text-decoration:none}
+    .back-top.visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+    .back-top:hover{border-color:rgba(0,212,255,0.45);color:var(--primary);transform:translateY(-3px) scale(1);background:rgba(0,212,255,0.06)}
+    @media(max-width:768px){.back-top{bottom:82px;left:14px;width:40px;height:40px;border-radius:10px}}
+
+    /* ═══════════════ MOBILE BOTTOM CTA BAR ═══════════════ */
+    .mobile-cta-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:8950;background:rgba(7,9,12,0.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--border);padding:10px 14px calc(10px + env(safe-area-inset-bottom));gap:10px;align-items:center}
+    @media(max-width:768px){.mobile-cta-bar{display:flex}}
+    .mobile-cta-bar .mcb-wa{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 14px;border-radius:12px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-weight:700;font-size:0.85rem;text-decoration:none;transition:all 0.2s}
+    .mobile-cta-bar .mcb-wa:hover{opacity:0.88;transform:translateY(-1px)}
+    .mobile-cta-bar .mcb-prod{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 14px;border-radius:12px;background:linear-gradient(90deg,var(--primary),var(--accent));color:#000;font-weight:700;font-size:0.85rem;text-decoration:none;transition:all 0.2s}
+    .mobile-cta-bar .mcb-prod:hover{opacity:0.88;transform:translateY(-1px)}
+    body.has-mobile-bar{padding-bottom:72px}
+    @media(max-width:768px){body.has-ann-bottom{padding-bottom:calc(72px + 38px)}}
+    @media(max-width:768px){.wa-float{display:none}}
+
+    /* ═══════════════ SCROLL REVEAL ═══════════════ */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
+    .reveal.revealed{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:0.1s}
+    .reveal-delay-2{transition-delay:0.2s}
+    .reveal-delay-3{transition-delay:0.3s}
+
+    /* ═══════════════ CATEGORY FILTER STICKY ═══════════════ */
+    .cat-filter-wrap{position:sticky;top:68px;z-index:500;background:rgba(7,9,12,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:10px 0 12px;margin-bottom:0;margin-left:-5%;margin-right:-5%;padding-left:5%;padding-right:5%;border-bottom:1px solid rgba(255,255,255,0.05);transition:top 0.3s}
+    .cat-filter-wrap.sticky-active{border-bottom-color:var(--border)}
+    @media(max-width:768px){.cat-filter-wrap{top:60px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap!important;padding-left:16px;padding-right:16px;margin-left:-16px;margin-right:-16px}}
+    .cat-filter-wrap::-webkit-scrollbar{display:none}
+    #categoryFilters{display:flex;gap:8px;flex-wrap:wrap}
+    @media(max-width:768px){#categoryFilters{flex-wrap:nowrap;width:max-content}}
+
+    /* ═══════════════ ADMIN PANEL ═══════════════ */
+    .admin-panel{display:none;position:fixed;inset:0;background:rgba(5,7,10,0.97);backdrop-filter:blur(20px);z-index:9999;overflow-y:auto}
+    .admin-container{max-width:1300px;margin:0 auto;padding:clamp(20px,3vw,36px) clamp(16px,3vw,28px)}
+    .admin-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:12px}
+    .admin-header h2{font-family:'Syne',sans-serif;font-size:clamp(1.3rem,3vw,1.6rem);font-weight:800;background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .btn-logout{padding:9px 18px;background:rgba(255,51,102,0.1);border:1px solid rgba(255,51,102,0.3);color:#ff3366;border-radius:10px;cursor:pointer;font-weight:600;font-size:0.85rem;transition:all 0.2s;font-family:'DM Sans',sans-serif}
+    .btn-logout:hover{background:rgba(255,51,102,0.2)}
+    .tabs{display:flex;gap:4px;margin-bottom:22px;background:var(--card2);padding:4px;border-radius:12px;width:fit-content;flex-wrap:wrap}
+    .tab{padding:9px 16px;background:transparent;border:none;color:var(--muted);cursor:pointer;border-radius:8px;font-weight:600;font-size:0.82rem;transition:all 0.2s;font-family:'DM Sans',sans-serif;white-space:nowrap}
+    .tab.active{background:var(--primary);color:#000}
+    .admin-form{background:var(--card);padding:clamp(20px,3vw,32px);border-radius:var(--radius);border:1px solid var(--border)}
+    .admin-form h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:22px}
+    .form-group{margin-bottom:14px}
+    .form-label{display:block;font-size:0.76rem;font-weight:600;color:var(--muted);letter-spacing:0.07em;text-transform:uppercase;margin-bottom:7px}
+    input[type="text"],input[type="number"],input[type="file"],textarea,select{width:100%;padding:12px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:var(--text);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.88rem;transition:border-color 0.2s;outline:none}
+    input:focus,textarea:focus,select:focus{border-color:rgba(0,212,255,0.4);background:rgba(0,212,255,0.02)}
+    textarea{resize:vertical;min-height:90px}
+    select option{background:#111720}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+    .preview-img{max-width:160px;margin-top:10px;border-radius:10px;border:1px solid var(--border)}
+    .btn-save{margin-top:22px;padding:13px 32px;background:linear-gradient(90deg,var(--primary),var(--accent));color:#000;font-weight:700;font-size:0.92rem;border:none;border-radius:12px;cursor:pointer;transition:all 0.3s;font-family:'DM Sans',sans-serif}
+    .btn-save:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,212,255,0.28)}
+    .admin-prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:14px}
+    .admin-prod-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;transition:border-color 0.2s}
+    .admin-prod-card:hover{border-color:rgba(0,212,255,0.26)}
+    .admin-prod-card strong{font-family:'Syne',sans-serif;font-size:0.97rem;display:block;margin-bottom:5px}
+    .admin-prod-card small{color:var(--muted);font-size:0.8rem}
+    .demo-tag{display:inline-block;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);color:var(--green);font-size:0.68rem;padding:2px 7px;border-radius:5px;margin-left:6px}
+    .admin-actions{margin-top:12px;display:flex;gap:8px}
+    .btn-edit,.btn-del{flex:1;padding:8px 10px;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.8rem;transition:all 0.2s;font-family:'DM Sans',sans-serif}
+    .btn-edit{background:rgba(0,170,102,0.1);border:1px solid rgba(0,170,102,0.22)!important;color:#00aa66}
+    .btn-edit:hover{background:rgba(0,170,102,0.2)}
+    .btn-del{background:rgba(204,51,51,0.1);border:1px solid rgba(204,51,51,0.22)!important;color:#cc3333}
+    .btn-del:hover{background:rgba(204,51,51,0.2)}
+
+    /* ═══════════════ TOGGLE SWITCH ═══════════════ */
+    .toggle-row{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:rgba(255,255,255,0.03);border:1px solid var(--border2);border-radius:12px;margin-bottom:12px;gap:12px}
+    .toggle-row-label{font-size:0.88rem;font-weight:600;color:var(--text);flex:1}
+    .toggle-row-sub{font-size:0.76rem;color:var(--muted);margin-top:2px}
+    .toggle-switch{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0}
+    .toggle-switch input{opacity:0;width:0;height:0}
+    .toggle-slider{position:absolute;cursor:pointer;inset:0;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.12);border-radius:24px;transition:all 0.25s}
+    .toggle-slider::before{content:'';position:absolute;height:16px;width:16px;left:3px;bottom:3px;background:#64748b;border-radius:50%;transition:all 0.25s}
+    .toggle-switch input:checked + .toggle-slider{background:rgba(0,212,255,0.15);border-color:rgba(0,212,255,0.4)}
+    .toggle-switch input:checked + .toggle-slider::before{transform:translateX(20px);background:var(--primary)}
+
+    /* ═══════════════ EDITABLE ITEM CARDS ═══════════════ */
+    .edit-item-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px;transition:border-color 0.2s}
+    .edit-item-card:hover{border-color:rgba(0,212,255,0.2)}
+    .edit-item-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:10px}
+    .edit-item-num{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:0.8rem;font-weight:800;color:#000;flex-shrink:0}
+    .edit-item-title{font-size:0.88rem;font-weight:600;flex:1}
+    .section-divider{border:none;border-top:1px solid var(--border);margin:20px 0}
+    .section-visibility-row{display:flex;align-items:center;justify-content:space-between;padding:16px;background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.14);border-radius:12px;margin-bottom:20px}
+    .section-visibility-label{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700}
+    .section-visibility-sub{font-size:0.78rem;color:var(--muted);margin-top:3px}
+    .icon-input-wrap{position:relative}
+    .icon-preview{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--primary);font-size:1rem;pointer-events:none}
+
+    /* ═══════════════ CATEGORY FILTERS ═══════════════ */
+    .cat-filter-btn{padding:8px 18px;border-radius:100px;border:1px solid var(--border2);background:rgba(255,255,255,0.04);color:var(--muted);font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.22s;font-family:'DM Sans',sans-serif;white-space:nowrap}
+    .cat-filter-btn:hover{border-color:rgba(0,212,255,0.4);color:var(--primary)}
+    .cat-filter-btn.active{background:rgba(0,212,255,0.1);border-color:rgba(0,212,255,0.5);color:var(--primary)}
+
+    /* ═══════════════ MARQUEE RIBBON ═══════════════ */
+    .marquee-ribbon{width:100%;overflow:hidden;position:relative;z-index:500;cursor:default;user-select:none}
+    .marquee-ribbon-inner{display:flex;align-items:center;white-space:nowrap;will-change:transform}
+    .marquee-ribbon-inner span{display:inline-flex;align-items:center;gap:10px;padding:0 18px;font-weight:700;letter-spacing:0.04em;font-family:'Syne',sans-serif}
+    .marquee-ribbon-inner span i{font-size:0.75em;opacity:0.7}
+    /* Effect: scroll */
+    @keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    /* Effect: fade-scroll */
+    .marquee-ribbon.effect-fade::before,.marquee-ribbon.effect-fade::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+    .marquee-ribbon.effect-fade::before{left:0;background:linear-gradient(to right,var(--marquee-bg,#00d4ff),transparent)}
+    .marquee-ribbon.effect-fade::after{right:0;background:linear-gradient(to left,var(--marquee-bg,#00d4ff),transparent)}
+    /* Effect: bounce */
+    @keyframes marqueeBounce{0%,100%{transform:translateX(0) scaleY(1)}50%{transform:translateX(-50%) scaleY(1.02)}}
+    /* Effect: wave */
+    .marquee-ribbon.effect-wave .marquee-ribbon-inner span{animation:waveChar 1.5s ease-in-out infinite alternate}
+    @keyframes waveChar{0%{transform:translateY(0)}100%{transform:translateY(-3px)}}
+    /* Ribbon positioning helpers */
+    .marquee-pos-top{top:0}
+    .marquee-pos-bottom{bottom:0;position:fixed!important}
+    .marquee-pos-after-hero{/* injected inline */}
+    .marquee-pos-above-products{/* injected inline */}
+    .marquee-pos-fixed-top{position:fixed!important;top:68px;left:0;right:0;z-index:998}
+
+    /* ═══════════════ SCROLL MARGIN (anchor links con header fijo) ═══════════════ */
+    #productos,#proceso,#processSection,#contacto{scroll-margin-top:80px}
+
+    /* ═══════════════ ADMIN TABS — scroll horizontal sticky ═══════════════ */
+    .tabs-wrap{position:sticky;top:0;z-index:10;background:rgba(5,7,10,0.97);backdrop-filter:blur(16px);padding-bottom:4px;margin:-4px -4px 18px;padding:8px 4px 8px}
+    .tabs{display:flex;gap:4px;background:var(--card2);padding:4px;border-radius:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;width:100%}
+    .tabs::-webkit-scrollbar{display:none}
+    .tab{padding:9px 14px;background:transparent;border:none;color:var(--muted);cursor:pointer;border-radius:8px;font-weight:600;font-size:0.82rem;transition:all 0.2s;font-family:'DM Sans',sans-serif;white-space:nowrap;flex-shrink:0}
+    .tab.active{background:var(--primary);color:#000}
+
+    /* ═══════════════ RESPONSIVE ═══════════════ */
+
+    /* — Tableta grande (1024px) — */
+    @media(max-width:1024px){
+      .process-grid{grid-template-columns:repeat(2,1fr)}
+      .features-grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+    /* — Tableta (900px) — */
+    @media(max-width:900px){
+      .stats-inner{grid-template-columns:repeat(2,1fr);gap:12px}
+      .admin-container{padding:20px 16px}
+    }
+
+    /* — Tableta pequeña / móvil grande (768px) — */
+    @media(max-width:768px){
+      nav{display:none}
+      .hamburger{display:flex}
+      .mobile-nav{display:flex}
+      .stats-inner{grid-template-columns:repeat(2,1fr)}
+      .form-row{grid-template-columns:1fr}
+      .form-row-3{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .process-grid{grid-template-columns:1fr}
+      .process-step{border-bottom:1px solid var(--border);padding:20px 12px}
+      .process-step:last-child{border-bottom:none}
+      .hero h1{letter-spacing:-2px}
+      .modal-content{border-radius:14px}
+      .modal-body{min-height:55vh}
+      .section-visibility-row{flex-wrap:wrap;gap:12px}
+      /* Popup full comfortable on tablet */
+      .popup-box{max-width:420px}
+      .popup-body{padding:22px 24px 26px}
+      /* Banner wrap */
+      .ann-banner{flex-wrap:wrap;gap:8px;padding:8px 16px;justify-content:center;text-align:center}
+      .ann-banner-text{flex:0 0 100%;text-align:center}
+    }
+
+    /* — Móvil (480px) — */
+    @media(max-width:480px){
+      header{padding:0 16px}
+      .logo-text{font-size:1.05rem}
+      .hero h1{font-size:clamp(2rem,11.5vw,3.2rem);letter-spacing:-1.5px;line-height:1}
+      .hero p{font-size:0.9rem;margin-bottom:32px}
+      .hero-badge{font-size:0.7rem;padding:6px 16px;margin-bottom:22px}
+      .hero-actions{flex-direction:column;align-items:center}
+      .hero-actions .btn-primary,.hero-actions .btn-ghost{width:100%;max-width:320px;justify-content:center}
+      .stats-inner{grid-template-columns:repeat(2,1fr);gap:8px}
+      .stat-item{padding:10px 6px}
+      .stat-num{font-size:clamp(1.5rem,7vw,2rem)}
+      .features-grid{grid-template-columns:1fr}
+      .section{padding:44px 16px}
+      .features-strip{padding:0 16px 44px}
+      .cta-band{padding:44px 16px}
+      .cta-inner{border-radius:20px;padding:36px 22px}
+      .buy-modal-content{padding:26px 18px;border-radius:18px}
+      .card-actions{flex-direction:column}
+      .btn-demo{justify-content:center}
+      .footer-links{gap:12px 18px}
+      .toast{font-size:0.8rem;padding:10px 16px;bottom:84px}
+      .admin-container{padding:14px 12px}
+      .admin-form{padding:18px 16px;border-radius:16px}
+      .tab{padding:8px 10px;font-size:0.74rem}
+      /* Popup full-width on mobile */
+      .popup-overlay{padding:12px}
+      .popup-box{max-width:100%;border-radius:18px}
+      .popup-body{padding:18px 18px 22px}
+      .popup-title{font-size:1.2rem}
+      .popup-img-wrap{height:150px}
+      /* Banner mobile */
+      .ann-banner{padding:8px 14px;font-size:0.82rem;min-height:38px}
+      body.has-ann-top header{top:38px}
+      /* section-visibility-row en móvil */
+      .section-visibility-row{padding:12px}
+      .section-visibility-label{font-size:0.88rem}
+      /* Color inputs width fix */
+      input[type="color"]{width:100%;height:42px}
+      /* Fix hero */
+      .hero-content{padding:28px 14px}
+      /* Cat filter sticky offset */
+      .cat-filter-wrap{top:56px}
+    }
+
+    /* — Móvil pequeño (360px) — */
+    @media(max-width:360px){
+      .hero h1{letter-spacing:-1px;font-size:clamp(1.9rem,12vw,2.6rem);line-height:1.02}
+      .logo-text{display:none}
+      .stat-num{font-size:1.4rem}
+      .stat-label{font-size:0.72rem}
+      .tab{padding:7px 8px;font-size:0.7rem}
+      .popup-body{padding:16px 14px 20px}
+      .popup-title{font-size:1.1rem}
+      .admin-form{padding:14px 12px}
+      .btn-save{padding:12px 20px;font-size:0.88rem;width:100%}
+      .section{padding:36px 14px}
+      .hero-badge{font-size:0.65rem;padding:5px 14px}
+    }
+
+    /* — Pantallas muy anchas (1400px+) — */
+    @media(min-width:1400px){
+      .features-grid{grid-template-columns:repeat(4,1fr)}
+    }
+
+    /* — Evitar hover animations en touch — */
+    @media(hover:none){
+      .product-card:hover{transform:none}
+      .btn-buy:hover{transform:none;box-shadow:none}
+      .btn-primary:hover{transform:none;box-shadow:none}
+      .btn-ghost:hover{transform:none}
+      .feature-card:hover{transform:none}
+      .social-btn:hover{transform:none}
+    }
+
+    /* — iOS: prevent zoom on inputs (font-size mínimo 16px) — */
+    @media screen and (-webkit-min-device-pixel-ratio:0){
+      input[type="text"],input[type="number"],input[type="email"],
+      input[type="tel"],input[type="url"],textarea,select{font-size:16px}
+    }
+
+    /* — WA float: sube cuando hay banner abajo — */
+    body.has-ann-bottom .wa-float{bottom:60px}
+    body.has-ann-bottom .toast{bottom:68px}
+
+    /* ═══════════════ TESTIMONIALS ═══════════════ */
+    .testimonials-section{padding:clamp(60px,8vw,110px) 5%;background:var(--card2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .testimonials-inner{max-width:1200px;margin:0 auto}
+    .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:20px;margin-top:52px}
+    .testimonial-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;position:relative;transition:all 0.35s cubic-bezier(0.23,1,0.32,1);overflow:hidden}
+    .testimonial-card::before{content:'"';position:absolute;top:-8px;left:20px;font-size:6rem;line-height:1;color:rgba(0,212,255,0.06);font-family:'Syne',sans-serif;font-weight:800;pointer-events:none}
+    .testimonial-card:hover{border-color:rgba(0,212,255,0.3);transform:translateY(-5px);box-shadow:0 20px 48px rgba(0,0,0,0.4)}
+    .testimonial-stars{display:flex;gap:3px;margin-bottom:14px}
+    .testimonial-stars i{color:#f59e0b;font-size:0.82rem}
+    .testimonial-text{color:var(--text);font-size:0.92rem;line-height:1.75;margin-bottom:20px;position:relative;z-index:1}
+    .testimonial-author{display:flex;align-items:center;gap:12px}
+    .testimonial-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.9rem;color:#000;flex-shrink:0;overflow:hidden}
+    .testimonial-avatar img{width:100%;height:100%;object-fit:cover}
+    .testimonial-name{font-family:'Syne',sans-serif;font-size:0.92rem;font-weight:700}
+    .testimonial-role{font-size:0.78rem;color:var(--muted);margin-top:2px}
+
+    /* ═══════════════ FAQ ═══════════════ */
+    .faq-section{padding:clamp(60px,8vw,110px) 5%}
+    .faq-inner{max-width:780px;margin:0 auto}
+    .faq-list{margin-top:40px;display:flex;flex-direction:column;gap:10px}
+    .faq-item{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color 0.25s}
+    .faq-item.open{border-color:rgba(0,212,255,0.35)}
+    .faq-question{width:100%;background:none;border:none;color:var(--text);text-align:left;padding:20px 22px;font-family:'Syne',sans-serif;font-size:0.97rem;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;transition:color 0.2s}
+    .faq-question:hover{color:var(--primary)}
+    .faq-question i{transition:transform 0.3s cubic-bezier(0.23,1,0.32,1);color:var(--primary);font-size:0.8rem;flex-shrink:0}
+    .faq-item.open .faq-question i{transform:rotate(180deg)}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.38s cubic-bezier(0.23,1,0.32,1)}
+    .faq-item.open .faq-answer{max-height:400px}
+    .faq-answer-inner{padding:0 22px 20px;color:var(--muted);font-size:0.9rem;line-height:1.8;border-top:1px solid var(--border)}
+    .faq-answer-inner p{padding-top:16px}
+
+    /* ═══════════════ VIDEO SECTION ═══════════════ */
+    .video-section{padding:clamp(60px,8vw,110px) 5%;background:var(--card2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .video-inner{max-width:900px;margin:0 auto}
+    .video-wrap{margin-top:44px;border-radius:20px;overflow:hidden;border:1px solid var(--border);position:relative;padding-bottom:56.25%;height:0;background:rgba(0,0,0,0.4)}
+    .video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+
+    /* ═══════════════ PRICE DISCOUNT ═══════════════ */
+    .price-original{font-size:0.9rem;color:var(--muted);text-decoration:line-through;margin-left:2px}
+    .price-discount-badge{display:inline-flex;align-items:center;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.25);color:var(--green);font-size:0.68rem;font-weight:700;padding:3px 8px;border-radius:6px;margin-left:4px}
+
+    /* ═══════════════ PRODUCT SPECIAL BADGE ═══════════════ */
+    .prod-special-tag{position:absolute;top:46px;left:14px;font-size:0.65rem;font-weight:700;padding:4px 10px;border-radius:100px;z-index:3;letter-spacing:0.06em;text-transform:uppercase}
+    .prod-special-tag.nuevo{background:rgba(0,212,255,0.15);border:1px solid rgba(0,212,255,0.4);color:var(--primary)}
+    .prod-special-tag.oferta{background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.4);color:var(--green)}
+    .prod-special-tag.popular{background:rgba(255,136,0,0.15);border:1px solid rgba(255,136,0,0.4);color:var(--accent)}
+    .prod-special-tag.agotado{background:rgba(255,51,102,0.12);border:1px solid rgba(255,51,102,0.35);color:#ff3366}
+
+    /* ═══════════════ VIEW TOGGLE ═══════════════ */
+    .section-top-row{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:0}
+    .view-toggle-wrap{display:flex;gap:6px;align-items:center}
+    .view-toggle-btn{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid var(--border2);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;font-size:0.85rem}
+    .view-toggle-btn.active{background:rgba(0,212,255,0.1);border-color:rgba(0,212,255,0.4);color:var(--primary)}
+    .grid.list-view{grid-template-columns:1fr!important}
+    .grid.list-view .product-card{display:flex;flex-direction:row}
+    .grid.list-view .card-img-wrap{width:200px;min-width:200px;height:auto}
+    @media(max-width:600px){.grid.list-view .product-card{flex-direction:column}.grid.list-view .card-img-wrap{width:100%;min-width:unset;height:180px}}
+
+    /* ═══════════════ COUNTDOWN TIMER IN POPUP ═══════════════ */
+    .popup-countdown{display:flex;gap:10px;justify-content:center;margin-bottom:18px;flex-wrap:wrap}
+    .countdown-unit{text-align:center;background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:8px 14px;min-width:56px}
+    .countdown-num{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--primary);line-height:1}
+    .countdown-label{font-size:0.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:3px}
+  </style>
+</head>
+<body>
+
+  <!-- ═══ SCROLL PROGRESS ═══ -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ═══ BACK TO TOP ═══ -->
+  <a href="#" class="back-top" id="backTop" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'});return false"><i class="fas fa-arrow-up"></i></a>
+
+  <!-- ═══ HEADER ═══ -->
+  <header>
+    <div class="logo-container">
+      <div class="logo-img" id="hLogoInitials">MP</div>
+      <span class="logo-text" id="hBrandName">MedalloPack</span>
+    </div>
+    <nav id="desktopNav"></nav>
+    <button class="hamburger" id="hamburger" aria-label="Menú" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav"></div>
+
+  <!-- ═══ MARQUEE RIBBON (posición dinámica) ═══ -->
+  <div id="marqueeRibbon" style="display:none"></div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" id="heroSection">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-overlay"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="hero-content" id="heroContent"></div>
+    <div class="hero-scroll"><i class="fas fa-chevron-down"></i> Scroll</div>
+  </section>
+
+  <!-- ═══ STATS ═══ -->
+  <div class="stats-bar reveal" id="statsBar">
+    <div class="stats-inner" id="statsInner"></div>
+  </div>
+
+  <!-- ═══ FEATURES ═══ -->
+  <div class="features-strip reveal" id="featuresStrip">
+    <div class="features-grid" id="featuresGrid"></div>
+  </div>
+
+  <!-- ═══ PRODUCTOS ═══ -->
+  <section id="productos" class="section">
+    <div class="section-top-row">
+      <div>
+        <div class="section-tag reveal">Catálogo</div>
+        <h2 class="section-title reveal reveal-delay-1">Nuestros <span>Productos</span></h2>
+        <p class="section-sub reveal reveal-delay-2">Soluciones digitales diseñadas para destacar. Cada producto incluye soporte personalizado y está listo para usar.</p>
+      </div>
+      <div class="view-toggle-wrap reveal">
+        <button class="view-toggle-btn active" id="btnViewGrid" onclick="setView('grid')" title="Vista cuadrícula"><i class="fas fa-th-large"></i></button>
+        <button class="view-toggle-btn" id="btnViewList" onclick="setView('list')" title="Vista lista"><i class="fas fa-list"></i></button>
+      </div>
+    </div>
+    <div class="cat-filter-wrap" id="catFilterWrap">
+      <div id="categoryFilters"></div>
+    </div>
+    <div class="grid" id="product-grid" style="margin-top:24px"></div>
+  </section>
+
+  <!-- ═══ PROCESO ═══ -->
+  <div class="process-section" id="processSection">
+    <div class="process-inner">
+      <div style="text-align:center;margin-bottom:4px">
+        <div class="section-tag reveal" style="justify-content:center">Metodología</div>
+        <h2 class="section-title reveal reveal-delay-1" style="text-align:center">Cómo <span>Trabajamos</span></h2>
+        <p class="section-sub reveal reveal-delay-2" style="margin:0 auto;text-align:center">Un proceso claro y transparente para que sepas exactamente qué esperar en cada etapa.</p>
+      </div>
+      <div class="process-grid" id="processGrid"></div>
+    </div>
+  </div>
+
+  <!-- ═══ CTA ═══ -->
+  <div class="cta-band" id="ctaBand" style="display:none">
+    <div class="cta-inner" id="ctaInner"></div>
+  </div>
+
+  <!-- ═══ VIDEO ═══ -->
+  <div class="video-section" id="videoSection" style="display:none">
+    <div class="video-inner">
+      <div style="text-align:center">
+        <div class="section-tag reveal" style="justify-content:center">Video</div>
+        <h2 class="section-title reveal reveal-delay-1" id="videoTitle" style="text-align:center">Conoce <span>nuestro trabajo</span></h2>
+        <p class="section-sub reveal reveal-delay-2" id="videoSubtitle" style="margin:0 auto 0;text-align:center"></p>
+      </div>
+      <div class="video-wrap reveal" id="videoWrap"></div>
+    </div>
+  </div>
+
+  <!-- ═══ TESTIMONIOS ═══ -->
+  <div class="testimonials-section" id="testimonialsSection" style="display:none">
+    <div class="testimonials-inner">
+      <div style="text-align:center">
+        <div class="section-tag reveal" style="justify-content:center">Testimonios</div>
+        <h2 class="section-title reveal reveal-delay-1" id="testimonialsTitle" style="text-align:center">Lo que dicen nuestros <span>clientes</span></h2>
+      </div>
+      <div class="testimonials-grid" id="testimonialsGrid"></div>
+    </div>
+  </div>
+
+  <!-- ═══ FAQ ═══ -->
+  <div class="faq-section" id="faqSection" style="display:none">
+    <div class="faq-inner">
+      <div style="text-align:center">
+        <div class="section-tag reveal" style="justify-content:center">FAQ</div>
+        <h2 class="section-title reveal reveal-delay-1" id="faqTitle" style="text-align:center">Preguntas <span>Frecuentes</span></h2>
+      </div>
+      <div class="faq-list" id="faqList"></div>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="footer-logo" id="fBrandName">MedalloPack</div>
+    <p class="footer-sub" id="fSub">Páginas Web y Diseño Digital · Medellín, Colombia</p>
+    <div class="footer-social" id="fSocial"></div>
+    <div class="footer-links" id="fLinks"></div>
+    <p class="copyright" id="copyright">© 2026 MedalloPack — Desarrollado con ♥ por Wilfer Rivera</p>
+  </footer>
+
+  <!-- ═══ MOBILE BOTTOM CTA BAR ═══ -->
+  <div class="mobile-cta-bar" id="mobileCTABar">
+    <a id="mcbWa" href="#" target="_blank" class="mcb-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a href="#productos" class="mcb-prod" onclick="closeMenu()"><i class="fas fa-th"></i> Ver Productos</a>
+  </div>
+
+  <!-- ═══ WHATSAPP FLOAT ═══ -->
+  <a id="waFloat" href="#" target="_blank" class="wa-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="wa-tooltip">¡Escríbenos!</span>
+  </a>
+
+  <!-- ═══ DEMO MODAL ═══ -->
+  <div class="modal" id="demoModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><span class="live-dot"></span><span id="demoTitle">Vista Previa</span></h3>
+        <button class="close-btn" onclick="closeDemoModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body" id="demoBody"></div>
+    </div>
+  </div>
+
+  <!-- ═══ BUY MODAL ═══ -->
+  <div class="buy-modal" id="buyModal">
+    <div class="buy-modal-content">
+      <div class="buy-modal-icon">🛒</div>
+      <h3 id="buyTitle">¿Cómo deseas pagar?</h3>
+      <p id="buySubtitle">Elige tu método de pago preferido</p>
+      <div class="pay-options" id="payOptions"></div>
+      <button class="btn-cancel" onclick="closeBuyModal()">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- ═══ ANNOUNCEMENT BANNER ═══ -->
+  <div id="annBanner" class="ann-banner pos-top" style="display:none">
+    <span class="ann-banner-text" id="annBannerText">¡Oferta especial! Contáctanos hoy.</span>
+    <a href="#" class="ann-banner-btn" id="annBannerBtn" style="display:none">Ver más</a>
+    <button class="ann-banner-close" id="annBannerClose" onclick="closeAnnBanner()" aria-label="Cerrar" style="display:none">✕</button>
+  </div>
+
+  <!-- ═══ POPUP ANUNCIO ═══ -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-box" id="popupBox">
+      <button class="popup-close-btn" onclick="closePopup()"><i class="fas fa-times"></i></button>
+      <div class="popup-img-wrap" id="popupImgWrap" style="display:none">
+        <img id="popupImg" src="" alt="">
+      </div>
+      <div class="popup-body">
+        <div class="popup-badge" id="popupBadge">📢 Anuncio</div>
+        <div class="popup-countdown" id="popupCountdown" style="display:none">
+          <div class="countdown-unit"><div class="countdown-num" id="cdDays">00</div><div class="countdown-label">Días</div></div>
+          <div class="countdown-unit"><div class="countdown-num" id="cdHours">00</div><div class="countdown-label">Horas</div></div>
+          <div class="countdown-unit"><div class="countdown-num" id="cdMins">00</div><div class="countdown-label">Min</div></div>
+          <div class="countdown-unit"><div class="countdown-num" id="cdSecs">00</div><div class="countdown-label">Seg</div></div>
+        </div>
+        <div class="popup-title" id="popupTitle">¡Oferta por tiempo limitado!</div>
+        <div class="popup-msg" id="popupMsg">No te pierdas nuestras promociones especiales. Haz clic para saber más.</div>
+        <div class="popup-actions">
+          <a href="#" class="btn-primary" id="popupBtn" style="display:none"><i class="fas fa-arrow-right"></i> Ver oferta</a>
+          <button class="btn-ghost" onclick="closePopup()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ ADMIN PANEL ═══ -->
+  <div class="admin-panel" id="adminPanel">
+    <div class="admin-container">
+      <div class="admin-header">
+        <h2>⚙️ Panel de Administración</h2>
+        <button class="btn-logout" onclick="logoutAdmin()"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+      </div>
+
+      <div class="tabs-wrap">
+      <div class="tabs" id="adminTabs">
+        <button class="tab active" onclick="showTab(0)">➕ Producto</button>
+        <button class="tab" onclick="showTab(1)">📦 Lista</button>
+        <button class="tab" onclick="showTab(2)">🦸 Hero</button>
+        <button class="tab" onclick="showTab(3)">📊 Stats</button>
+        <button class="tab" onclick="showTab(4)">✨ Características</button>
+        <button class="tab" onclick="showTab(5)">🔄 Proceso</button>
+        <button class="tab" onclick="showTab(6)">📣 CTA</button>
+        <button class="tab" onclick="showTab(7)">🏷️ Categorías</button>
+        <button class="tab" onclick="showTab(8)">📢 Marquee</button>
+        <button class="tab" onclick="showTab(9)">⚙️ Config</button>
+        <button class="tab" onclick="showTab(10)">🔔 Anuncios</button>
+        <button class="tab" onclick="showTab(11)">⭐ Testimonios</button>
+        <button class="tab" onclick="showTab(12)">❓ FAQ</button>
+        <button class="tab" onclick="showTab(13)">🔍 SEO</button>
+      </div>
+      </div>
+
+      <!-- TAB 0: Crear/Editar Producto -->
+      <div id="tab0">
+        <div class="admin-form">
+          <h3>Crear / Editar Producto</h3>
+          <input type="hidden" id="editId">
+          <div class="form-group"><label class="form-label">Nombre del Producto</label><input type="text" id="nombre" placeholder="Ej: Página Web Corporativa Premium"></div>
+          <div class="form-group"><label class="form-label">Descripción</label><textarea id="descripcion" placeholder="Describe en detalle qué incluye este producto..."></textarea></div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Categoría</label><select id="tipo"><option value="pagina">Página Web</option><option value="diseno">Diseño Digital</option></select></div>
+            <div class="form-group"><label class="form-label">Precio en COP</label><input type="number" id="precioCOP" placeholder="Ej: 1250000" step="50000"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Precio Original / Antes (opcional, para tachar)</label><input type="number" id="precioOriginal" placeholder="Ej: 1800000" step="50000"></div>
+            <div class="form-group"><label class="form-label">Badge Especial</label>
+              <select id="productBadge">
+                <option value="">Sin badge</option>
+                <option value="nuevo">🆕 Nuevo</option>
+                <option value="oferta">🏷️ Oferta</option>
+                <option value="popular">🔥 Popular</option>
+                <option value="agotado">⛔ Agotado</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group"><label class="form-label">Imagen del Producto</label><input type="file" id="imagen" accept="image/*" onchange="previewImage(this)"><img id="imgPreview" class="preview-img" style="display:none" alt="Vista previa"></div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Link PayPal</label><input type="text" id="paypalLink" placeholder="https://paypal.me/..."></div>
+            <div class="form-group"><label class="form-label">Link Wompi</label><input type="text" id="wompiLink" placeholder="https://checkout.wompi.co/..."></div>
+          </div>
+          <div class="form-group"><label class="form-label">Demo Interactivo</label><select id="tieneDemo" onchange="toggleDemoField()"><option value="no">Sin Demo</option><option value="si">Con Demo (HTML o ZIP)</option></select></div>
+          <div class="form-group" id="demoFileGroup" style="display:none"><label class="form-label">Archivo del Demo</label><input type="file" id="demoFile" accept=".html,.zip"></div>
+          <button class="btn-save" onclick="guardarProducto()"><i class="fas fa-save"></i> Guardar Producto</button>
+        </div>
+      </div>
+
+      <!-- TAB 1: Lista Productos -->
+      <div id="tab1" style="display:none">
+        <div class="admin-prod-grid" id="adminProductList"></div>
+      </div>
+
+      <!-- TAB 2: Hero -->
+      <div id="tab2" style="display:none">
+        <div class="admin-form">
+          <h3>🦸 Sección Hero</h3>
+          <div class="section-visibility-row">
+            <div><div class="section-visibility-label">Mostrar sección Hero</div><div class="section-visibility-sub">La sección principal al tope de la página</div></div>
+            <label class="toggle-switch"><input type="checkbox" id="cfg_heroVisible" checked><span class="toggle-slider"></span></label>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Texto del Badge</label><input type="text" id="cfg_heroBadge" placeholder="Medellín, Colombia"></div>
+            <div class="form-group"><label class="form-label">Ícono del Badge (FontAwesome)</label><div class="icon-input-wrap"><input type="text" id="cfg_heroBadgeIcon" placeholder="fas fa-map-marker-alt"><span class="icon-preview"><i id="badgeIconPreview" class="fas fa-map-marker-alt"></i></span></div></div>
+          </div>
+          <div class="form-group"><label class="form-label">Título Principal (H1)</label><input type="text" id="cfg_heroTitle" placeholder="MedalloPack"></div>
+          <div class="form-group"><label class="form-label">Subtítulo / Descripción</label><textarea id="cfg_heroSubtitle" style="min-height:70px" placeholder="Descripción del negocio..."></textarea></div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Botón 1 — Texto</label><input type="text" id="cfg_heroBtn1Text" placeholder="Ver Productos"></div>
+            <div class="form-group"><label class="form-label">Botón 1 — Link</label><input type="text" id="cfg_heroBtn1Link" placeholder="#productos"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Botón 2 — Texto</label><input type="text" id="cfg_heroBtn2Text" placeholder="Cómo Funciona"></div>
+            <div class="form-group"><label class="form-label">Botón 2 — Link</label><input type="text" id="cfg_heroBtn2Link" placeholder="#proceso"></div>
+          </div>
+          <button class="btn-save" onclick="saveSection('hero')"><i class="fas fa-save"></i> Guardar Hero</button>
+        </div>
+      </div>
+
+      <!-- TAB 3: Stats -->
+      <div id="tab3" style="display:none">
+        <div class="admin-form">
+          <h3>📊 Barra de Estadísticas</h3>
+          <div class="section-visibility-row">
+            <div><div class="section-visibility-label">Mostrar barra de Stats</div><div class="section-visibility-sub">La franja de números debajo del hero</div></div>
+            <label class="toggle-switch"><input type="checkbox" id="cfg_statsVisible" checked><span class="toggle-slider"></span></label>
+          </div>
+          <div id="statsEditor"></div>
+          <button class="btn-save" onclick="saveSection('stats')"><i class="fas fa-save"></i> Guardar Stats</button>
+        </div>
+      </div>
+
+      <!-- TAB 4: Características -->
+      <div id="tab4" style="display:none">
+        <div class="admin-form">
+          <h3>✨ Características / Features</h3>
+          <div class="section-visibility-row">
+            <div><div class="section-visibility-label">Mostrar sección Características</div><div class="section-visibility-sub">Las 4 tarjetas de beneficios</div></div>
+            <label class="toggle-switch"><input type="checkbox" id="cfg_featuresVisible" checked><span class="toggle-slider"></span></label>
+          </div>
+          <div id="featuresEditor"></div>
+          <button class="btn-save" onclick="saveSection('features')"><i class="fas fa-save"></i> Guardar Características</button>
+        </div>
+      </div>
+
+      <!-- TAB 5: Proceso -->
+      <div id="tab5" style="display:none">
+        <div class="admin-form">
+          <h3>🔄 Proceso / Pasos</h3>
+          <div class="section-visibility-row">
+            <div><div class="section-visibility-label">Mostrar sección Proceso</div><div class="section-visibility-sub">Los pasos de trabajo</div></div>
+            <label class="toggle-switch"><input type="checkbox" id="cfg_processVisible" checked><span class="toggle-slider"></span></label>
+          </div>
+          <div id="processEditor"></div>
+          <button class="btn-save" onclick="saveSection('process')"><i class="fas fa-save"></i> Guardar Proceso</button>
+        </div>
+      </div>
+
+      <!-- TAB 6: CTA -->
+      <div id="tab6" style="display:none">
+        <div class="admin-form">
+          <h3>📣 CTA y Contacto</h3>
+          <div class="section-visibility-row">
+            <div><div class="section-visibility-label">Mostrar sección CTA</div><div class="section-visibility-sub">La franja de llamado a la acción</div></div>
+            <label class="toggle-switch"><input type="checkbox" id="cfg_ctaVisible" checked><span class="toggle-slider"></span></label>
+          </div>
+          <div class="form-group"><label class="form-label">Título</label><input type="text" id="cfg_ctaTitle" placeholder="¿Listo para crecer online?"></div>
+          <div class="form-group"><label class="form-label">Descripción</label><textarea id="cfg_ctaDesc" style="min-height:70px" placeholder="Descripción..."></textarea></div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Botón 1 — Texto (WhatsApp)</label><input type="text" id="cfg_ctaBtn1Text" placeholder="Hablar por WhatsApp"></div>
+            <div class="form-group"><label class="form-label">Botón 2 — Texto</label><input type="text" id="cfg_ctaBtn2Text" placeholder="Ver Catálogo"></div>
+          </div>
+          <div class="form-group"><label class="form-label">Botón 2 — Link</label><input type="text" id="cfg_ctaBtn2Link" placeholder="#productos"></div>
+          <button class="btn-save" onclick="saveSection('cta')"><i class="fas fa-save"></i> Guardar CTA</button>
+        </div>
+      </div>
+
+      <!-- TAB 7: Categorías -->
+      <div id="tab7" style="display:none">
+        <div class="admin-form">
+          <h3>🏷️ Categorías de Productos</h3>
+          <p style="font-size:0.84rem;color:var(--muted);margin-bottom:20px">Gestiona las categorías disponibles para los productos. La primera es el valor (clave) y la segunda el nombre visible.</p>
+          <div id="categoriesEditor"></div>
+          <button class="btn-save" style="background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.3);color:var(--primary);margin-top:0;margin-bottom:12px" onclick="addCategory()"><i class="fas fa-plus"></i> Agregar Categoría</button>
+          <button class="btn-save" onclick="saveSection('categories')"><i class="fas fa-save"></i> Guardar Categorías</button>
+        </div>
+      </div>
+
+      <!-- TAB 8: Marquee -->
+      <div id="tab8" style="display:none">
+        <div class="admin-form">
+          <h3>📢 Cinta Marquee / Banner Animado</h3>
+          <div class="section-visibility-row">
+            <div><div class="section-visibility-label">Activar cinta marquee</div><div class="section-visibility-sub">Muestra una banda de texto animado en la página</div></div>
+            <label class="toggle-switch"><input type="checkbox" id="mqActive"><span class="toggle-slider"></span></label>
+          </div>
+          <div class="form-group"><label class="form-label">Texto de la cinta (separa items con |)</label><input type="text" id="mqText" placeholder="⚡ Oferta especial | 🚀 Nuevos productos | 📞 Contáctanos hoy"></div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Ícono separador (FontAwesome o emoji)</label><input type="text" id="mqSeparator" placeholder="fas fa-star  ó  ✦"></div>
+            <div class="form-group"><label class="form-label">Velocidad (seg para 1 ciclo)</label><input type="number" id="mqSpeed" min="5" max="120" step="5" placeholder="20"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Efecto</label>
+              <select id="mqEffect">
+                <option value="scroll">Scroll continuo</option>
+                <option value="fade">Fade en bordes</option>
+                <option value="wave">Wave (ondulado)</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Posición en la página</label>
+              <select id="mqPosition">
+                <option value="fixed-top">Fijo arriba (bajo el header)</option>
+                <option value="after-hero">Después del Hero</option>
+                <option value="above-products">Antes de Productos</option>
+                <option value="fixed-bottom">Fijo abajo</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Color de fondo</label><input type="color" id="mqBgColor" value="#00d4ff" style="height:44px;cursor:pointer"></div>
+            <div class="form-group"><label class="form-label">Color de texto</label><input type="color" id="mqTextColor" value="#000000" style="height:44px;cursor:pointer"></div>
+          </div>
+          <div class="form-group"><label class="form-label">Tamaño del texto</label>
+            <select id="mqFontSize">
+              <option value="0.72rem">Pequeño</option>
+              <option value="0.85rem" selected>Mediano</option>
+              <option value="1rem">Grande</option>
+              <option value="1.15rem">Extra Grande</option>
+            </select>
+          </div>
+          <div style="margin-top:16px;padding:14px;background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.14);border-radius:12px">
+            <p style="font-size:0.8rem;color:var(--muted)">👁️ <strong style="color:var(--text)">Vista previa:</strong> los cambios se aplican al guardar.</p>
+          </div>
+          <button class="btn-save" onclick="saveSection('marquee')"><i class="fas fa-save"></i> Guardar Marquee</button>
+        </div>
+      </div>
+
+      <!-- TAB 9: Config General (was tab7) -->
+      <div id="tab9" style="display:none">
+        <div class="admin-form">
+          <h3>⚙️ Configuración General</h3>
+
+          <!-- Logo Upload -->
+          <div style="background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.14);border-radius:14px;padding:20px;margin-bottom:20px">
+            <p style="font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;margin-bottom:14px;color:var(--text)">🖼️ Logo de la Marca</p>
+            <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+              <div id="logoPreviewBox" style="width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:#000;overflow:hidden;flex-shrink:0;border:1px solid var(--border)">MP</div>
+              <div style="flex:1;min-width:180px">
+                <label class="form-label">Imagen del logo (PNG, SVG, JPG)</label>
+                <input type="file" id="cfg_logoFile" accept="image/*" onchange="previewLogo(this)" style="margin-bottom:8px">
+                <p style="font-size:0.75rem;color:var(--muted)">Recomendado: fondo transparente (PNG/SVG), mín. 200×200px</p>
+              </div>
+              <button onclick="removeLogo()" style="padding:9px 16px;background:rgba(204,51,51,0.1);border:1px solid rgba(204,51,51,0.3);color:#cc3333;border-radius:10px;cursor:pointer;font-size:0.8rem;font-family:'DM Sans',sans-serif;white-space:nowrap"><i class="fas fa-trash"></i> Quitar</button>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Nombre de la Marca</label><input type="text" id="cfg_brandName" placeholder="MedalloPack"></div>
+            <div class="form-group"><label class="form-label">Iniciales del Logo (si no hay imagen)</label><input type="text" id="cfg_brandInitials" placeholder="MP" maxlength="3"></div>
+          </div>
+          <div class="form-group"><label class="form-label">Número WhatsApp (con código de país, sin +)</label><input type="text" id="cfg_whatsapp" placeholder="573001234567"></div>
+          <div class="form-group"><label class="form-label">Subtítulo del Footer</label><input type="text" id="cfg_footerSub" placeholder="Páginas Web y Diseño Digital · Medellín, Colombia"></div>
+          <hr class="section-divider">
+          <p style="font-size:0.82rem;color:var(--muted);margin-bottom:16px">Redes Sociales (deja en blanco o # para ocultar)</p>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label"><i class="fab fa-instagram" style="color:#E1306C;margin-right:5px"></i>Instagram</label><input type="text" id="cfg_instagram" placeholder="https://instagram.com/..."></div>
+            <div class="form-group"><label class="form-label"><i class="fab fa-facebook-f" style="color:#1877F2;margin-right:5px"></i>Facebook</label><input type="text" id="cfg_facebook" placeholder="https://facebook.com/..."></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label"><i class="fab fa-whatsapp" style="color:#25D366;margin-right:5px"></i>WhatsApp Link</label><input type="text" id="cfg_waLink" placeholder="https://wa.me/573..."></div>
+            <div class="form-group"><label class="form-label"><i class="fab fa-tiktok" style="margin-right:5px"></i>TikTok</label><input type="text" id="cfg_tiktok" placeholder="https://tiktok.com/@..."></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label"><i class="fab fa-linkedin-in" style="color:#0A66C2;margin-right:5px"></i>LinkedIn</label><input type="text" id="cfg_linkedin" placeholder="https://linkedin.com/in/..."></div>
+            <div class="form-group"><label class="form-label"><i class="fab fa-youtube" style="color:#FF0000;margin-right:5px"></i>YouTube</label><input type="text" id="cfg_youtube" placeholder="https://youtube.com/@..."></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label"><i class="fab fa-x-twitter" style="margin-right:5px"></i>X / Twitter</label><input type="text" id="cfg_twitter" placeholder="https://x.com/..."></div>
+          </div>
+          <hr class="section-divider">
+          <p style="font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;margin-bottom:14px;color:var(--text)">💾 Backup de Configuración</p>
+          <div class="form-row">
+            <button type="button" onclick="exportConfig()" style="padding:13px 20px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.3);color:var(--primary);border-radius:12px;cursor:pointer;font-weight:700;font-size:0.85rem;font-family:'DM Sans',sans-serif;transition:all 0.2s"><i class="fas fa-download"></i> Exportar Config JSON</button>
+            <div class="form-group" style="margin-bottom:0"><label class="form-label">Importar Config JSON</label><input type="file" id="importConfigFile" accept=".json" onchange="importConfig(this)"></div>
+          </div>
+          <button class="btn-save" onclick="saveSection('config')"><i class="fas fa-save"></i> Guardar Configuración</button>
+        </div>
+      </div>
+
+      <!-- TAB 10: Anuncios (Banner + Popup) -->
+      <div id="tab10" style="display:none">
+        <div class="admin-form">
+          <h3>🔔 Anuncios — Banner y Pop-up</h3>
+
+          <!-- BANNER DE ANUNCIO -->
+          <div style="background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.18);border-radius:16px;padding:22px;margin-bottom:24px">
+            <p style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:18px;color:var(--text)">📢 Banner de Anuncio</p>
+            <div class="section-visibility-row">
+              <div><div class="section-visibility-label">Activar banner de anuncio</div><div class="section-visibility-sub">Banda fija de notificación visible en toda la página</div></div>
+              <label class="toggle-switch"><input type="checkbox" id="bannerActive"><span class="toggle-slider"></span></label>
+            </div>
+            <div class="form-group"><label class="form-label">Texto del banner</label><input type="text" id="bannerText" placeholder="⚡ ¡Oferta especial! Páginas web desde $1.250.000 COP"></div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Texto del botón (dejar vacío para ocultar)</label><input type="text" id="bannerBtnText" placeholder="Ver más →"></div>
+              <div class="form-group"><label class="form-label">Link del botón</label><input type="text" id="bannerBtnLink" placeholder="#productos"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Posición</label>
+                <select id="bannerPosition">
+                  <option value="top">Fijo arriba (sobre el header)</option>
+                  <option value="bottom">Fijo abajo</option>
+                </select>
+              </div>
+              <div class="form-group"><label class="form-label">El usuario puede cerrarlo</label>
+                <select id="bannerCloseable">
+                  <option value="yes">Sí, mostrar botón de cerrar</option>
+                  <option value="no">No, siempre visible</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Color de fondo</label><input type="color" id="bannerBgColor" value="#00d4ff" style="height:44px;cursor:pointer"></div>
+              <div class="form-group"><label class="form-label">Color de texto</label><input type="color" id="bannerTextColor" value="#000000" style="height:44px;cursor:pointer"></div>
+            </div>
+          </div>
+
+          <!-- POPUP DE ANUNCIO -->
+          <div style="background:rgba(255,136,0,0.04);border:1px solid rgba(255,136,0,0.2);border-radius:16px;padding:22px;margin-bottom:24px">
+            <p style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:18px;color:var(--text)">🪟 Pop-up de Anuncio</p>
+            <div class="section-visibility-row">
+              <div><div class="section-visibility-label">Activar pop-up de anuncio</div><div class="section-visibility-sub">Ventana flotante que aparece al cargar la página</div></div>
+              <label class="toggle-switch"><input type="checkbox" id="popupActive"><span class="toggle-slider"></span></label>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Etiqueta del badge (emoji o texto corto)</label><input type="text" id="popupBadgeText" placeholder="📢 Anuncio"></div>
+              <div class="form-group"><label class="form-label">Título del pop-up</label><input type="text" id="popupTitleInput" placeholder="¡Oferta por tiempo limitado!"></div>
+            </div>
+            <div class="form-group"><label class="form-label">Mensaje del pop-up</label><textarea id="popupMsgInput" style="min-height:70px" placeholder="No te pierdas nuestras promociones especiales. Haz clic para saber más."></textarea></div>
+            <div class="form-group"><label class="form-label">URL de imagen (dejar vacío para solo texto)</label><input type="text" id="popupImgUrl" placeholder="https://...imagen.jpg"></div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Texto del botón (vacío = ocultar)</label><input type="text" id="popupBtnText" placeholder="Ver oferta"></div>
+              <div class="form-group"><label class="form-label">Link del botón</label><input type="text" id="popupBtnLink" placeholder="#productos"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Mostrar después de (segundos)</label><input type="number" id="popupDelay" min="0" max="60" step="1" placeholder="2"></div>
+              <div class="form-group"><label class="form-label">Frecuencia de aparición</label>
+                <select id="popupFrequency">
+                  <option value="always">Siempre (cada visita)</option>
+                  <option value="session">Una vez por sesión</option>
+                  <option value="once">Solo una vez (por dispositivo)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group"><label class="form-label">⏱️ Countdown — Fecha límite de la oferta (opcional)</label><input type="datetime-local" id="popupCountdownTarget" placeholder=""></div>
+          </div>
+
+          <div style="padding:14px;background:rgba(255,255,255,0.03);border:1px solid var(--border2);border-radius:12px;margin-bottom:16px">
+            <p style="font-size:0.8rem;color:var(--muted)">💡 Los cambios se aplican al guardar y se verán en la página al cerrar el panel.</p>
+          </div>
+          <button class="btn-save" onclick="saveSection('anuncios')"><i class="fas fa-save"></i> Guardar Anuncios</button>
+        </div>
+      </div>
+
+      <!-- TAB 11: Testimonios -->
+      <div id="tab11" style="display:none">
+        <div class="admin-form">
+          <h3>⭐ Testimonios</h3>
+          <div class="section-visibility-row">
+            <div><div class="section-visibility-label">Mostrar sección Testimonios</div><div class="section-visibility-sub">Reseñas de clientes en la página</div></div>
+            <label class="toggle-switch"><input type="checkbox" id="cfg_testimonialsVisible" checked><span class="toggle-slider"></span></label>
+          </div>
+          <div class="form-group"><label class="form-label">Título de la sección</label><input type="text" id="cfg_testimonialsTitle" placeholder="Lo que dicen nuestros clientes"></div>
+          <div id="testimonialsEditor"></div>
+          <button type="button" style="padding:12px 18px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.3);color:var(--primary);border-radius:12px;cursor:pointer;font-weight:700;font-size:0.84rem;font-family:'DM Sans',sans-serif;margin-top:8px;margin-bottom:12px;transition:all 0.2s" onclick="addTestimonial()"><i class="fas fa-plus"></i> Agregar Testimonio</button>
+          <button class="btn-save" onclick="saveSection('testimonials')"><i class="fas fa-save"></i> Guardar Testimonios</button>
+        </div>
+      </div>
+
+      <!-- TAB 12: FAQ -->
+      <div id="tab12" style="display:none">
+        <div class="admin-form">
+          <h3>❓ Preguntas Frecuentes</h3>
+          <div class="section-visibility-row">
+            <div><div class="section-visibility-label">Mostrar sección FAQ</div><div class="section-visibility-sub">Preguntas y respuestas en acordeón</div></div>
+            <label class="toggle-switch"><input type="checkbox" id="cfg_faqVisible" checked><span class="toggle-slider"></span></label>
+          </div>
+          <div class="form-group"><label class="form-label">Título de la sección</label><input type="text" id="cfg_faqTitle" placeholder="Preguntas Frecuentes"></div>
+          <div id="faqEditor"></div>
+          <button type="button" style="padding:12px 18px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.3);color:var(--primary);border-radius:12px;cursor:pointer;font-weight:700;font-size:0.84rem;font-family:'DM Sans',sans-serif;margin-top:8px;margin-bottom:12px;transition:all 0.2s" onclick="addFaq()"><i class="fas fa-plus"></i> Agregar Pregunta</button>
+          <button class="btn-save" onclick="saveSection('faq')"><i class="fas fa-save"></i> Guardar FAQ</button>
+        </div>
+      </div>
+
+      <!-- TAB 13: SEO -->
+      <div id="tab13" style="display:none">
+        <div class="admin-form">
+          <h3>🔍 SEO y Analytics</h3>
+
+          <div style="background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.14);border-radius:14px;padding:20px;margin-bottom:20px">
+            <p style="font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;margin-bottom:14px;color:var(--text)">📄 Meta Tags</p>
+            <div class="form-group"><label class="form-label">Meta Título (recomendado: 50-60 caracteres)</label><input type="text" id="seo_metaTitle" placeholder="MedalloPack - Páginas Web y Diseño Digital en Medellín"></div>
+            <div class="form-group"><label class="form-label">Meta Descripción (recomendado: 150-160 caracteres)</label><textarea id="seo_metaDesc" style="min-height:70px" placeholder="Creamos páginas web profesionales en Medellín, Colombia..."></textarea></div>
+            <div class="form-group"><label class="form-label">Palabras clave (separadas por coma)</label><input type="text" id="seo_keywords" placeholder="páginas web, diseño web, Medellín, Colombia"></div>
+          </div>
+
+          <div style="background:rgba(255,136,0,0.04);border:1px solid rgba(255,136,0,0.18);border-radius:14px;padding:20px;margin-bottom:20px">
+            <p style="font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;margin-bottom:14px;color:var(--text)">📣 Open Graph (redes sociales)</p>
+            <div class="form-group"><label class="form-label">OG Título</label><input type="text" id="seo_ogTitle" placeholder="MedalloPack"></div>
+            <div class="form-group"><label class="form-label">OG Descripción</label><textarea id="seo_ogDesc" style="min-height:60px" placeholder="Páginas web profesionales..."></textarea></div>
+            <div class="form-group"><label class="form-label">OG Imagen (URL)</label><input type="text" id="seo_ogImage" placeholder="https://tu-sitio.com/og-image.jpg"></div>
+          </div>
+
+          <div style="background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.18);border-radius:14px;padding:20px;margin-bottom:20px">
+            <p style="font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;margin-bottom:14px;color:var(--text)">📊 Analytics</p>
+            <div class="form-group"><label class="form-label">Google Analytics ID (Ej: G-XXXXXXXXXX)</label><input type="text" id="seo_gaId" placeholder="G-XXXXXXXXXX"></div>
+            <div class="form-group"><label class="form-label">Facebook Pixel ID (solo el número)</label><input type="text" id="seo_fbPixel" placeholder="123456789012345"></div>
+          </div>
+
+          <div style="background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.14);border-radius:14px;padding:20px;margin-bottom:20px">
+            <p style="font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;margin-bottom:14px;color:var(--text)">🎥 Sección de Video</p>
+            <div class="section-visibility-row" style="margin-bottom:14px">
+              <div><div class="section-visibility-label">Mostrar sección de video</div></div>
+              <label class="toggle-switch"><input type="checkbox" id="cfg_videoVisible"><span class="toggle-slider"></span></label>
+            </div>
+            <div class="form-group"><label class="form-label">Título de la sección</label><input type="text" id="cfg_videoTitle" placeholder="Conoce nuestro trabajo"></div>
+            <div class="form-group"><label class="form-label">Subtítulo</label><input type="text" id="cfg_videoSubtitle" placeholder="Mira cómo creamos páginas web profesionales"></div>
+            <div class="form-group"><label class="form-label">URL de YouTube (ej: https://youtu.be/xXxXxXx o embed URL)</label><input type="text" id="cfg_videoUrl" placeholder="https://www.youtube.com/embed/tu-video-id"></div>
+          </div>
+
+          <div style="padding:13px;background:rgba(255,255,255,0.03);border:1px solid var(--border2);border-radius:12px;margin-bottom:16px">
+            <p style="font-size:0.8rem;color:var(--muted)">💡 Los cambios de SEO se aplican al guardar. Google Analytics y Facebook Pixel requieren recargar la página para activarse.</p>
+          </div>
+          <button class="btn-save" onclick="saveSection('seo')"><i class="fas fa-save"></i> Guardar SEO</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    /* ═══════════════ DEFAULT CONFIG ═══════════════ */
+    const DEFAULT_CONFIG = {
+      brandName: "MedalloPack", brandInitials: "MP",
+      whatsapp: "573000000000", footerSub: "Páginas Web y Diseño Digital · Medellín, Colombia",
+      instagram: "#", facebook: "#", waLink: "#", tiktok: "#",
+      linkedin: "#", youtube: "#", twitter: "#",
+      heroBadge: "Medellín, Colombia", heroBadgeIcon: "fas fa-map-marker-alt",
+      heroTitle: "MedalloPack",
+      heroSubtitle: "Páginas web profesionales y diseño digital que impulsan tu negocio al siguiente nivel en Colombia y el mundo.",
+      heroBtn1Text: "Ver Productos", heroBtn1Link: "#productos",
+      heroBtn2Text: "Cómo Funciona", heroBtn2Link: "#proceso",
+      heroVisible: true,
+      statsVisible: true,
+      categories: [
+        {value:"pagina", label:"Página Web"},
+        {value:"diseno", label:"Diseño Digital"},
+        {value:"ecommerce", label:"Tienda Online"},
+        {value:"branding", label:"Branding"}
+      ],
+      marquee: {
+        active: false,
+        text: "⚡ Oferta especial | 🚀 Páginas desde $1.250.000 COP | 📞 Contáctanos hoy | 🎯 Diseño Profesional | 🌐 Presencia Digital",
+        separator: "fas fa-diamond",
+        speed: 25,
+        effect: "scroll",
+        position: "fixed-top",
+        bgColor: "#00d4ff",
+        textColor: "#000000",
+        fontSize: "0.85rem"
+      },
+      stats: [
+        {num:"50+",label:"Proyectos Entregados"},
+        {num:"100%",label:"Clientes Satisfechos"},
+        {num:"48h",label:"Tiempo de Respuesta"},
+        {num:"5★",label:"Valoración Promedio"}
+      ],
+      featuresVisible: true,
+      features: [
+        {icon:"fas fa-mobile-alt",title:"100% Responsivo",desc:"Tu sitio luce perfecto en celular, tablet y computador desde el primer día.",visible:true},
+        {icon:"fas fa-search",title:"SEO Optimizado",desc:"Aparece en Google más rápido con prácticas de posicionamiento incluidas.",visible:true},
+        {icon:"fas fa-bolt",title:"Alta Velocidad",desc:"Carga en menos de 2 segundos para que no pierdas un solo cliente.",visible:true},
+        {icon:"fas fa-headset",title:"Soporte Incluido",desc:"Acompañamiento personalizado por WhatsApp durante y después del proyecto.",visible:true}
+      ],
+      processVisible: true,
+      steps: [
+        {title:"Contacto Inicial",desc:"Nos cuentas tu idea por WhatsApp o correo y hacemos un diagnóstico gratuito.",visible:true},
+        {title:"Propuesta",desc:"Recibe una propuesta personalizada con precio fijo y tiempo de entrega claro.",visible:true},
+        {title:"Desarrollo",desc:"Diseñamos y programamos tu proyecto con revisiones en tiempo real.",visible:true},
+        {title:"Entrega",desc:"Tu sitio en línea con capacitación para que lo administres sin depender de nadie.",visible:true}
+      ],
+      ctaVisible: true,
+      ctaTitle: "¿Listo para crecer online?",
+      ctaDesc: "Hablemos hoy y convierte tu negocio en una presencia digital memorable.",
+      ctaBtn1Text: "Hablar por WhatsApp", ctaBtn2Text: "Ver Catálogo", ctaBtn2Link: "#productos",
+      banner: {
+        active: false,
+        text: "⚡ ¡Oferta especial! Páginas web desde $1.250.000 COP — ¡Contáctanos hoy!",
+        btnText: "Ver más",
+        btnLink: "#productos",
+        position: "top",
+        closeable: "yes",
+        bgColor: "#00d4ff",
+        textColor: "#000000"
+      },
+      popup: {
+        active: false,
+        badge: "📢 Anuncio",
+        title: "¡Oferta por tiempo limitado!",
+        msg: "No te pierdas nuestras promociones especiales. Diseño web profesional con descuento exclusivo.",
+        imgUrl: "",
+        btnText: "Ver oferta",
+        btnLink: "#productos",
+        delay: 2,
+        frequency: "session",
+        countdownTarget: ""
+      },
+      testimonials: {
+        visible: true,
+        title: "Lo que dicen nuestros clientes",
+        items: [
+          {nombre:"Juan Pérez", cargo:"Empresario · Medellín", texto:"Excelente trabajo. El equipo fue muy profesional y la página quedó exactamente como la imaginé.", estrellas:5, visible:true},
+          {nombre:"María García", cargo:"Tienda Online", texto:"La página quedó increíble y el proceso fue muy rápido. Mis ventas aumentaron desde el primer mes.", estrellas:5, visible:true},
+          {nombre:"Carlos López", cargo:"Restaurante · Envigado", texto:"Gran equipo, siempre disponibles. 100% recomendados para cualquier negocio que quiera crecer online.", estrellas:5, visible:true}
+        ]
+      },
+      faq: {
+        visible: true,
+        title: "Preguntas Frecuentes",
+        items: [
+          {pregunta:"¿Cuánto tiempo tarda el proyecto?", respuesta:"La mayoría de proyectos se entregan en 5-10 días hábiles según la complejidad.", visible:true},
+          {pregunta:"¿Qué incluye el precio?", respuesta:"Diseño personalizado, desarrollo, hosting por 1 año, dominio y capacitación para administrar tu página.", visible:true},
+          {pregunta:"¿Puedo hacer cambios después de la entrega?", respuesta:"Sí, ofrecemos soporte post-entrega y planes de mantenimiento mensual para actualizar tu contenido.", visible:true},
+          {pregunta:"¿Cómo es el proceso de pago?", respuesta:"50% para iniciar el proyecto y 50% al entregar. Aceptamos PayPal, Wompi, Nequi y transferencia bancaria.", visible:true}
+        ]
+      },
+      seo: {
+        metaTitle: "", metaDesc: "", metaKeywords: "",
+        ogTitle: "", ogDesc: "", ogImage: "",
+        gaId: "", fbPixel: ""
+      },
+      videoSection: {
+        visible: false,
+        title: "Conoce nuestro trabajo",
+        subtitle: "Mira cómo creamos páginas web profesionales para negocios en Colombia",
+        youtubeUrl: ""
+      }
+    };
+
+    /* ═══════════════ STATE ═══════════════ */
+    let cfg = Object.assign({}, DEFAULT_CONFIG, JSON.parse(localStorage.getItem('medallopack_config') || '{}'));
+    let productos = JSON.parse(localStorage.getItem('medallopack_productos')) || [];
+    const ADMIN_USER = "elparivera", ADMIN_PASS = "Wriverd12345";
+
+    /* ═══════════════ APPLY CONFIG TO PAGE ═══════════════ */
+    function applyConfig() {
+      const c = cfg;
+      // Brand + Logo
+      const logoEl = document.getElementById('hLogoInitials');
+      if (c.logoImg) {
+        logoEl.innerHTML = '<img src="' + c.logoImg + '" alt="Logo">';
+        logoEl.classList.add('has-img');
+      } else {
+        logoEl.innerHTML = c.brandInitials || 'MP';
+        logoEl.classList.remove('has-img');
+      }
+      document.getElementById('hBrandName').textContent = c.brandName;
+      // Footer logo
+      const fLogoEl = document.getElementById('fBrandName');
+      if (c.logoImg) {
+        fLogoEl.innerHTML = '<span style="display:inline-flex;align-items:center;gap:10px"><span style="width:36px;height:36px;border-radius:10px;overflow:hidden;display:inline-flex;background:transparent;border:1px solid rgba(255,255,255,0.1);flex-shrink:0"><img src="' + c.logoImg + '" alt="Logo" style="width:100%;height:100%;object-fit:contain"></span>' + esc(c.brandName) + '</span>';
+      } else {
+        fLogoEl.textContent = c.brandName;
+      }
+      document.getElementById('fSub').textContent = c.footerSub;
+      document.title = c.brandName + ' - Páginas Web y Diseño Digital';
+
+      // Nav
+      buildNav();
+
+      // WhatsApp float
+      const wa = document.getElementById('waFloat');
+      wa.href = 'https://wa.me/' + c.whatsapp;
+      // Mobile bottom bar WA
+      const mcbWa = document.getElementById('mcbWa');
+      if (mcbWa) mcbWa.href = 'https://wa.me/' + c.whatsapp + '?text=' + encodeURIComponent('Hola, quiero más información sobre sus servicios');
+
+      // Hero
+      document.getElementById('heroSection').style.display = c.heroVisible === false ? 'none' : '';
+      document.getElementById('heroContent').innerHTML =
+        '<div class="hero-badge"><i class="' + (c.heroBadgeIcon||'fas fa-map-marker-alt') + '" style="font-size:0.65rem"></i>' + esc(c.heroBadge) + '</div>' +
+        '<h1>' + esc(c.heroTitle) + '</h1>' +
+        '<p>' + esc(c.heroSubtitle) + '</p>' +
+        '<div class="hero-actions">' +
+          '<a href="' + esc(c.heroBtn1Link) + '" class="btn-primary"><i class="fas fa-th-large"></i> ' + esc(c.heroBtn1Text) + '</a>' +
+          '<a href="' + esc(c.heroBtn2Link) + '" class="btn-ghost"><i class="fas fa-play-circle"></i> ' + esc(c.heroBtn2Text) + '</a>' +
+        '</div>';
+
+      // Stats
+      const statsBar = document.getElementById('statsBar');
+      statsBar.style.display = c.statsVisible === false ? 'none' : '';
+      const si = document.getElementById('statsInner');
+      si.innerHTML = '';
+      (c.stats || []).forEach(s => {
+        const d = document.createElement('div'); d.className = 'stat-item';
+        d.innerHTML = '<div class="stat-num">' + esc(s.num) + '</div><div class="stat-label">' + esc(s.label) + '</div>';
+        si.appendChild(d);
+      });
+
+      // Features
+      const fs = document.getElementById('featuresStrip');
+      fs.style.display = c.featuresVisible === false ? 'none' : '';
+      const fg = document.getElementById('featuresGrid');
+      fg.innerHTML = '';
+      (c.features || []).filter(f => f.visible !== false).forEach(f => {
+        const d = document.createElement('div'); d.className = 'feature-card';
+        d.innerHTML = '<div class="feature-icon"><i class="' + esc(f.icon) + '"></i></div><h4>' + esc(f.title) + '</h4><p>' + esc(f.desc) + '</p>';
+        fg.appendChild(d);
+      });
+
+      // Process
+      const ps = document.getElementById('processSection');
+      ps.style.display = c.processVisible === false ? 'none' : '';
+      const pg = document.getElementById('processGrid');
+      pg.innerHTML = '';
+      let stepNum = 1;
+      (c.steps || []).filter(s => s.visible !== false).forEach(s => {
+        const d = document.createElement('div'); d.className = 'process-step';
+        d.innerHTML = '<div class="step-num">' + stepNum + '</div><h4>' + esc(s.title) + '</h4><p>' + esc(s.desc) + '</p>';
+        pg.appendChild(d); stepNum++;
+      });
+
+      // CTA
+      const ctaBand = document.getElementById('ctaBand');
+      ctaBand.style.display = c.ctaVisible === false ? 'none' : '';
+      document.getElementById('ctaInner').innerHTML =
+        '<h2>' + esc(c.ctaTitle) + '</h2>' +
+        '<p>' + esc(c.ctaDesc) + '</p>' +
+        '<div class="cta-actions">' +
+          '<a href="https://wa.me/' + c.whatsapp + '" target="_blank" class="btn-primary"><i class="fab fa-whatsapp"></i> ' + esc(c.ctaBtn1Text) + '</a>' +
+          '<a href="' + esc(c.ctaBtn2Link) + '" class="btn-ghost"><i class="fas fa-th-large"></i> ' + esc(c.ctaBtn2Text) + '</a>' +
+        '</div>';
+
+      // Footer social
+      const fSocial = document.getElementById('fSocial');
+      fSocial.innerHTML = '';
+      const socials = [
+        {key:'instagram',icon:'fab fa-instagram',label:'Instagram'},
+        {key:'facebook',icon:'fab fa-facebook-f',label:'Facebook'},
+        {key:'waLink',icon:'fab fa-whatsapp',label:'WhatsApp'},
+        {key:'tiktok',icon:'fab fa-tiktok',label:'TikTok'},
+        {key:'linkedin',icon:'fab fa-linkedin-in',label:'LinkedIn'},
+        {key:'youtube',icon:'fab fa-youtube',label:'YouTube'},
+        {key:'twitter',icon:'fab fa-x-twitter',label:'X/Twitter'},
+      ];
+      socials.forEach(s => {
+        const url = c[s.key];
+        if (url && url !== '#') {
+          const a = document.createElement('a');
+          a.href = url; a.target = '_blank'; a.className = 'social-btn'; a.setAttribute('aria-label', s.label);
+          a.innerHTML = '<i class="' + s.icon + '"></i>';
+          fSocial.appendChild(a);
+        }
+      });
+
+      // Footer links
+      const fLinks = document.getElementById('fLinks');
+      fLinks.innerHTML =
+        '<a href="#productos">Productos</a>' +
+        '<a href="#proceso">Proceso</a>' +
+        '<a href="#contacto">Servicios</a>' +
+        '<a href="https://wa.me/' + c.whatsapp + '" target="_blank">Contacto</a>';
+
+      // Testimonials
+      const tSec = document.getElementById('testimonialsSection');
+      const tGrid = document.getElementById('testimonialsGrid');
+      const tCfg = c.testimonials || {};
+      const tItems = (tCfg.items || []).filter(t => t.visible !== false);
+      if (tCfg.visible !== false && tItems.length > 0) {
+        tSec.style.display = '';
+        document.getElementById('testimonialsTitle').innerHTML = (tCfg.title || 'Lo que dicen nuestros clientes').replace(/([^<]*)(clientes|trabajo|nosotros)/i, '$1<span>$2</span>');
+        tGrid.innerHTML = '';
+        tItems.forEach(t => {
+          const stars = Array(Math.min(5, t.estrellas || 5)).fill('<i class="fas fa-star"></i>').join('');
+          const initials = (t.nombre || '?').split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+          const div = document.createElement('div'); div.className = 'testimonial-card reveal';
+          div.innerHTML = '<div class="testimonial-stars">' + stars + '</div>' +
+            '<p class="testimonial-text">' + esc(t.texto) + '</p>' +
+            '<div class="testimonial-author"><div class="testimonial-avatar">' + initials + '</div>' +
+            '<div><div class="testimonial-name">' + esc(t.nombre) + '</div><div class="testimonial-role">' + esc(t.cargo) + '</div></div></div>';
+          tGrid.appendChild(div);
+        });
+      } else { tSec.style.display = 'none'; }
+
+      // FAQ
+      const faqSec = document.getElementById('faqSection');
+      const faqList = document.getElementById('faqList');
+      const faqCfg = c.faq || {};
+      const faqItems = (faqCfg.items || []).filter(f => f.visible !== false);
+      if (faqCfg.visible !== false && faqItems.length > 0) {
+        faqSec.style.display = '';
+        document.getElementById('faqTitle').innerHTML = (faqCfg.title || 'Preguntas Frecuentes').replace(/(Frecuentes|Preguntas)/gi, '<span>$1</span>');
+        faqList.innerHTML = '';
+        faqItems.forEach((f, i) => {
+          const div = document.createElement('div'); div.className = 'faq-item reveal';
+          div.innerHTML = '<button class="faq-question" onclick="toggleFaq(this)"><span>' + esc(f.pregunta) + '</span><i class="fas fa-chevron-down"></i></button>' +
+            '<div class="faq-answer"><div class="faq-answer-inner"><p>' + esc(f.respuesta) + '</p></div></div>';
+          faqList.appendChild(div);
+        });
+      } else { faqSec.style.display = 'none'; }
+
+      // Video section
+      const vidSec = document.getElementById('videoSection');
+      const vidCfg = c.videoSection || {};
+      if (vidCfg.visible && vidCfg.youtubeUrl) {
+        vidSec.style.display = '';
+        document.getElementById('videoTitle').innerHTML = esc(vidCfg.title || 'Conoce nuestro trabajo').replace(/(trabajo|nuestro)/gi, '<span>$1</span>');
+        document.getElementById('videoSubtitle').textContent = vidCfg.subtitle || '';
+        let url = vidCfg.youtubeUrl;
+        if (url.includes('youtu.be/')) url = 'https://www.youtube.com/embed/' + url.split('youtu.be/')[1].split('?')[0];
+        else if (url.includes('watch?v=')) url = 'https://www.youtube.com/embed/' + url.split('watch?v=')[1].split('&')[0];
+        document.getElementById('videoWrap').innerHTML = '<iframe src="' + url + '" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>';
+      } else { vidSec.style.display = 'none'; }
+
+      // SEO meta tags
+      const seo = c.seo || {};
+      if (seo.metaTitle) document.title = seo.metaTitle;
+      if (seo.metaDesc) document.getElementById('metaDesc').content = seo.metaDesc;
+      if (seo.metaKeywords) document.getElementById('metaKeywords').content = seo.metaKeywords;
+      if (seo.ogTitle) document.getElementById('ogTitle').content = seo.ogTitle;
+      if (seo.ogDesc) document.getElementById('ogDesc').content = seo.ogDesc;
+      if (seo.ogImage) document.getElementById('ogImage').content = seo.ogImage;
+      // Google Analytics
+      if (seo.gaId && !window._gaLoaded) {
+        window._gaLoaded = true;
+        const s = document.createElement('script'); s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + seo.gaId;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function(){dataLayer.push(arguments);};
+        gtag('js', new Date()); gtag('config', seo.gaId);
+      }
+      // Facebook Pixel
+      if (seo.fbPixel && !window._fbLoaded) {
+        window._fbLoaded = true;
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', seo.fbPixel); fbq('track', 'PageView');
+      }
+
+      // Marquee
+      applyMarquee();
+      // Banner & Popup
+      applyBanner();
+      applyPopup();
+      // Update tipo select categories
+      updateTipoSelect();
+    }
+
+    function buildNav() {
+      const c = cfg;
+      const waUrl = 'https://wa.me/' + c.whatsapp;
+      const links = [
+        {text:'Productos',href:'#productos'},
+        {text:'Proceso',href:'#proceso'},
+        {text:'Servicios',href:'#contacto'},
+      ];
+      // Desktop nav
+      const dn = document.getElementById('desktopNav');
+      dn.innerHTML = links.map(l => '<a href="' + l.href + '">' + l.text + '</a>').join('') +
+        '<a href="' + waUrl + '" target="_blank" class="nav-cta"><i class="fab fa-whatsapp" style="margin-right:5px"></i>Contacto</a>';
+      // Mobile nav
+      const mn = document.getElementById('mobileNav');
+      const icons = ['fas fa-th-large','fas fa-list-ol','fas fa-briefcase'];
+      mn.innerHTML = links.map((l,i) => '<a href="' + l.href + '" onclick="closeMenu()"><i class="' + icons[i] + '" style="margin-right:10px;opacity:0.5"></i>' + l.text + '</a>').join('') +
+        '<a href="' + waUrl + '" target="_blank" class="nav-cta" onclick="closeMenu()"><i class="fab fa-whatsapp" style="margin-right:8px"></i>Contactar por WhatsApp</a>';
+    }
+
+    function esc(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    /* ═══════════════ MOBILE NAV ═══════════════ */
+    function toggleMenu() {
+      const ham = document.getElementById('hamburger'), nav = document.getElementById('mobileNav');
+      ham.classList.toggle('open'); nav.classList.toggle('open');
+      document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+    }
+    function closeMenu() {
+      document.getElementById('hamburger').classList.remove('open');
+      document.getElementById('mobileNav').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('click', e => {
+      const nav = document.getElementById('mobileNav');
+      if (nav.classList.contains('open') && !nav.contains(e.target) && !document.getElementById('hamburger').contains(e.target)) closeMenu();
+    });
+
+    /* ═══════════════ ADMIN HELPERS ═══════════════ */
+    function previewImage(input) {
+      if (input.files && input.files[0]) {
+        const r = new FileReader();
+        r.onload = e => { const p = document.getElementById('imgPreview'); p.src = e.target.result; p.style.display = 'block'; };
+        r.readAsDataURL(input.files[0]);
+      }
+    }
+    function toggleDemoField() {
+      document.getElementById('demoFileGroup').style.display = document.getElementById('tieneDemo').value === 'si' ? 'block' : 'none';
+    }
+
+    /* ═══════════════ SAVE PRODUCT ═══════════════ */
+    function guardarProducto() {
+      const nombre = document.getElementById('nombre').value.trim();
+      if (!nombre) { showToast('⚠️ El nombre es obligatorio'); return; }
+      const id = document.getElementById('editId').value || Date.now();
+      const precioCOP = parseFloat(document.getElementById('precioCOP').value) || 0;
+      const producto = {
+        id: Number(id), nombre,
+        descripcion: document.getElementById('descripcion').value,
+        precioCOP, precioUSD: (precioCOP / 4100).toFixed(2),
+        precioOriginal: parseFloat(document.getElementById('precioOriginal').value) || 0,
+        badge: document.getElementById('productBadge').value || '',
+        tipo: document.getElementById('tipo').value,
+        paypal: document.getElementById('paypalLink').value,
+        wompi: document.getElementById('wompiLink').value,
+        tieneDemo: document.getElementById('tieneDemo').value === 'si',
+        fecha: new Date().toISOString()
+      };
+      const existente = productos.find(p => p.id === producto.id);
+      if (existente) { producto.imagen = existente.imagen; producto.demoHTML = existente.demoHTML; }
+      if (!producto.imagen) producto.imagen = 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80';
+      const imgInput = document.getElementById('imagen');
+      if (imgInput.files[0]) {
+        const r = new FileReader();
+        r.onload = e => { producto.imagen = e.target.result; saveProducto(producto); };
+        r.readAsDataURL(imgInput.files[0]);
+      } else { saveProducto(producto); }
+    }
+    function saveProducto(producto) {
+      const demoFile = document.getElementById('demoFile');
+      if (producto.tieneDemo && demoFile.files[0]) {
+        const r = new FileReader();
+        r.onload = e => { producto.demoHTML = e.target.result; finishSave(producto); };
+        if (demoFile.files[0].name.endsWith('.html')) r.readAsText(demoFile.files[0]);
+        else r.readAsDataURL(demoFile.files[0]);
+      } else { finishSave(producto); }
+    }
+    function finishSave(producto) {
+      const editId = document.getElementById('editId').value;
+      if (editId) { productos = productos.map(p => p.id == producto.id ? producto : p); }
+      else { productos.push(producto); }
+      localStorage.setItem('medallopack_productos', JSON.stringify(productos));
+      renderProducts(); renderAdminProducts();
+      ['editId','nombre','descripcion','precioCOP','precioOriginal','paypalLink','wompiLink'].forEach(id => { document.getElementById(id).value = ''; });
+      document.getElementById('productBadge').value = '';
+      document.getElementById('imagen').value = '';
+      document.getElementById('imgPreview').style.display = 'none';
+      document.getElementById('tieneDemo').value = 'no'; toggleDemoField();
+      showToast('✅ Producto guardado con éxito');
+    }
+
+    /* ═══════════════ TOAST ═══════════════ */
+    function showToast(msg) {
+      const existing = document.querySelector('.toast');
+      if (existing) existing.remove();
+      const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
+      document.body.appendChild(t);
+      setTimeout(() => { if (t.parentNode) t.remove(); }, 3200);
+    }
+
+    /* ═══════════════ RENDER PRODUCTS ═══════════════ */
+    let activeFilter = 'all';
+
+    function renderCategoryFilters() {
+      const container = document.getElementById('categoryFilters');
+      if (!container) return;
+      const cats = cfg.categories || [{value:'pagina',label:'Página Web'},{value:'diseno',label:'Diseño Digital'}];
+      // Only show filters if there are products in multiple categories
+      const usedCats = [...new Set(productos.map(p => p.tipo))];
+      if (usedCats.length < 2) { container.innerHTML = ''; return; }
+      let html = '<button class="cat-filter-btn' + (activeFilter==='all'?' active':'') + '" onclick="filterProducts(\'all\')">Todos</button>';
+      cats.filter(c => usedCats.includes(c.value)).forEach(c => {
+        html += '<button class="cat-filter-btn' + (activeFilter===c.value?' active':'') + '" onclick="filterProducts(\'' + c.value + '\')">' + esc(c.label) + '</button>';
+      });
+      container.innerHTML = html;
+    }
+
+    function filterProducts(cat) {
+      activeFilter = cat;
+      renderCategoryFilters();
+      renderProductGrid();
+    }
+
+    function renderProducts() {
+      renderCategoryFilters();
+      renderProductGrid();
+    }
+
+    function renderProductGrid() {
+      const container = document.getElementById('product-grid');
+      container.innerHTML = '';
+      const list = activeFilter === 'all' ? productos : productos.filter(p => p.tipo === activeFilter);
+      if (list.length === 0) {
+        container.innerHTML = '<div class="empty-state"><i class="fas fa-box-open"></i><p>No hay productos disponibles aún.<br><small style="opacity:0.6">Agrega tu primer producto desde el panel de administración.</small></p></div>';
+        return;
+      }
+      list.forEach((prod, i) => {
+        const card = document.createElement('div'); card.className = 'product-card'; card.style.animationDelay = (i * 0.08) + 's';
+        const badgeLabel = getCategoryLabel(prod.tipo);
+        const imgSrc = prod.imagen || 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80';
+        const discountPct = (prod.precioOriginal && prod.precioOriginal > prod.precioCOP) ? Math.round((1 - prod.precioCOP/prod.precioOriginal)*100) : 0;
+        const priceRowExtra = prod.precioOriginal && prod.precioOriginal > prod.precioCOP
+          ? '<span class="price-original">$' + prod.precioOriginal.toLocaleString('es-CO') + '</span><span class="price-discount-badge">-' + discountPct + '%</span>'
+          : '';
+        const specialBadgeHtml = prod.badge ? '<div class="prod-special-tag ' + prod.badge + '">' + {nuevo:'🆕 Nuevo',oferta:'🏷️ Oferta',popular:'🔥 Popular',agotado:'⛔ Agotado'}[prod.badge] + '</div>' : '';
+        card.innerHTML =
+          '<div class="card-img-wrap">' +
+            '<img src="' + imgSrc + '" alt="' + prod.nombre + '" loading="lazy">' +
+            '<div class="card-badge">' + badgeLabel + '</div>' +
+            specialBadgeHtml +
+            (prod.tieneDemo ? '<div class="card-demo-badge"><i class="fas fa-eye"></i> Demo</div>' : '') +
+          '</div>' +
+          '<div class="product-info">' +
+            '<h3>' + prod.nombre + '</h3>' +
+            '<p>' + prod.descripcion.substring(0,115) + (prod.descripcion.length > 115 ? '…' : '') + '</p>' +
+            '<div class="price-row"><span class="price">$' + prod.precioCOP.toLocaleString('es-CO') + '</span>' + priceRowExtra + '<span class="price-usd">≈ $' + prod.precioUSD + ' USD</span></div>' +
+            '<div class="card-actions">' +
+              (prod.badge !== 'agotado' ? '<button class="btn-buy" onclick="comprarProducto(' + prod.id + ')"><i class="fas fa-shopping-cart"></i> Comprar</button>' : '<button class="btn-buy" style="opacity:0.5;cursor:not-allowed" disabled><i class="fas fa-times-circle"></i> Agotado</button>') +
+              (prod.tieneDemo ? '<button class="btn-demo" onclick="verDemo(' + prod.id + ')"><i class="fas fa-play"></i> Demo</button>' : '') +
+            '</div>' +
+          '</div>';
+        container.appendChild(card);
+      });
+    }
+
+    /* ═══════════════ DEMO MODAL ═══════════════ */
+    function verDemo(id) {
+      const prod = productos.find(p => p.id === id);
+      if (!prod || !prod.demoHTML) { showToast('⚠️ Demo no disponible'); return; }
+      document.getElementById('demoTitle').textContent = prod.nombre;
+      const demoBody = document.getElementById('demoBody');
+      if (prod.demoHTML.startsWith('data:')) {
+        demoBody.innerHTML = '<p style="color:#333;padding:40px;text-align:center;font-family:sans-serif">Demo ZIP disponible. Contáctanos para acceder.</p>';
+      } else {
+        demoBody.innerHTML = '<iframe srcdoc="' + prod.demoHTML.replace(/"/g, '&quot;') + '" sandbox="allow-scripts allow-same-origin"></iframe>';
+      }
+      document.getElementById('demoModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDemoModal() {
+      document.getElementById('demoModal').style.display = 'none';
+      document.getElementById('demoBody').innerHTML = '';
+      document.body.style.overflow = '';
+    }
+
+    /* ═══════════════ BUY MODAL ═══════════════ */
+    function comprarProducto(id) {
+      const prod = productos.find(p => p.id === id);
+      if (!prod) return;
+      document.getElementById('buyTitle').textContent = prod.nombre;
+      document.getElementById('buySubtitle').textContent = '$' + prod.precioCOP.toLocaleString('es-CO') + ' COP · Elige tu método de pago';
+      const opts = document.getElementById('payOptions'); opts.innerHTML = '';
+      if (prod.paypal) {
+        const btn = document.createElement('a'); btn.href = prod.paypal; btn.target = '_blank'; btn.className = 'pay-btn pay-paypal';
+        btn.innerHTML = '<i class="fab fa-paypal"></i> Pagar con PayPal'; btn.onclick = () => setTimeout(closeBuyModal, 100); opts.appendChild(btn);
+      }
+      if (prod.wompi) {
+        const btn = document.createElement('a'); btn.href = prod.wompi; btn.target = '_blank'; btn.className = 'pay-btn pay-wompi';
+        btn.innerHTML = '<i class="fas fa-credit-card"></i> Pagar con Wompi'; btn.onclick = () => setTimeout(closeBuyModal, 100); opts.appendChild(btn);
+      }
+      const wa = document.createElement('a');
+      wa.href = 'https://wa.me/' + cfg.whatsapp + '?text=' + encodeURIComponent('Hola! Quiero comprar: ' + prod.nombre + ' ($' + prod.precioCOP.toLocaleString('es-CO') + ' COP)');
+      wa.target = '_blank'; wa.className = 'pay-btn pay-whatsapp';
+      wa.innerHTML = '<i class="fab fa-whatsapp"></i> Pagar por WhatsApp'; wa.onclick = () => setTimeout(closeBuyModal, 100); opts.appendChild(wa);
+      if (!prod.paypal && !prod.wompi) {
+        const btn = document.createElement('button'); btn.className = 'pay-btn pay-contact';
+        btn.innerHTML = '<i class="fas fa-envelope"></i> Contactar a ' + cfg.brandName;
+        btn.onclick = () => { closeBuyModal(); showToast('📞 Contacta a ' + cfg.brandName + ' para completar la compra.'); }; opts.appendChild(btn);
+      }
+      document.getElementById('buyModal').style.display = 'flex'; document.body.style.overflow = 'hidden';
+    }
+    function closeBuyModal() { document.getElementById('buyModal').style.display = 'none'; document.body.style.overflow = ''; }
+
+    /* ═══════════════ ADMIN PRODUCTS LIST ═══════════════ */
+    function renderAdminProducts() {
+      const container = document.getElementById('adminProductList');
+      container.innerHTML = '';
+      if (productos.length === 0) {
+        container.innerHTML = '<div class="empty-state"><i class="fas fa-inbox"></i><p>No hay productos creados aún.</p></div>'; return;
+      }
+      productos.forEach(prod => {
+        const div = document.createElement('div'); div.className = 'admin-prod-card';
+        div.innerHTML =
+          '<strong>' + prod.nombre + '</strong>' +
+          '<small>$' + prod.precioCOP.toLocaleString('es-CO') + ' COP' + (prod.tieneDemo ? '<span class="demo-tag">Con Demo</span>' : '') + '</small>' +
+          '<div class="admin-actions">' +
+            '<button class="btn-edit" onclick="editarProducto(' + prod.id + ')"><i class="fas fa-edit"></i> Editar</button>' +
+            '<button class="btn-del" onclick="eliminarProducto(' + prod.id + ')"><i class="fas fa-trash"></i> Eliminar</button>' +
+          '</div>';
+        container.appendChild(div);
+      });
+    }
+    function editarProducto(id) {
+      const prod = productos.find(p => p.id === id); if (!prod) return;
+      document.getElementById('editId').value = prod.id;
+      document.getElementById('nombre').value = prod.nombre;
+      document.getElementById('descripcion').value = prod.descripcion;
+      document.getElementById('precioCOP').value = prod.precioCOP;
+      document.getElementById('precioOriginal').value = prod.precioOriginal || '';
+      document.getElementById('productBadge').value = prod.badge || '';
+      document.getElementById('paypalLink').value = prod.paypal || '';
+      document.getElementById('wompiLink').value = prod.wompi || '';
+      document.getElementById('tipo').value = prod.tipo || 'pagina';
+      document.getElementById('tieneDemo').value = prod.tieneDemo ? 'si' : 'no';
+      toggleDemoField(); showTab(0);
+    }
+    function eliminarProducto(id) {
+      if (!confirm('¿Seguro que deseas eliminar este producto?')) return;
+      productos = productos.filter(p => p.id !== id);
+      localStorage.setItem('medallopack_productos', JSON.stringify(productos));
+      renderProducts(); renderAdminProducts(); showToast('🗑️ Producto eliminado');
+    }
+
+    /* ═══════════════ TAB MANAGEMENT ═══════════════ */
+    function showTab(n) {
+      const total = 14;
+      document.querySelectorAll('.tab').forEach((tab, i) => {
+        tab.classList.toggle('active', i === n);
+        if (i === n) tab.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+      });
+      for (let i = 0; i < total; i++) {
+        const el = document.getElementById('tab' + i);
+        if (el) el.style.display = i === n ? 'block' : 'none';
+      }
+      if (n === 2) loadHeroForm();
+      if (n === 3) loadStatsForm();
+      if (n === 4) loadFeaturesForm();
+      if (n === 5) loadProcessForm();
+      if (n === 6) loadCtaForm();
+      if (n === 7) loadCategoriesForm();
+      if (n === 8) loadMarqueeForm();
+      if (n === 9) loadConfigForm();
+      if (n === 10) loadAnunciosForm();
+      if (n === 11) loadTestimonialsForm();
+      if (n === 12) loadFaqForm();
+      if (n === 13) loadSeoForm();
+    }
+
+    /* ═══════════════ LOAD FORMS FROM CONFIG ═══════════════ */
+    function loadHeroForm() {
+      const c = cfg;
+      setVal('cfg_heroVisible', c.heroVisible !== false, true);
+      setVal('cfg_heroBadge', c.heroBadge);
+      setVal('cfg_heroBadgeIcon', c.heroBadgeIcon || 'fas fa-map-marker-alt');
+      setVal('cfg_heroTitle', c.heroTitle);
+      setVal('cfg_heroSubtitle', c.heroSubtitle);
+      setVal('cfg_heroBtn1Text', c.heroBtn1Text);
+      setVal('cfg_heroBtn1Link', c.heroBtn1Link);
+      setVal('cfg_heroBtn2Text', c.heroBtn2Text);
+      setVal('cfg_heroBtn2Link', c.heroBtn2Link);
+      updateBadgeIconPreview();
+    }
+    function updateBadgeIconPreview() {
+      const val = document.getElementById('cfg_heroBadgeIcon').value.trim();
+      const prev = document.getElementById('badgeIconPreview');
+      if (prev) { prev.className = val || 'fas fa-map-marker-alt'; }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const inp = document.getElementById('cfg_heroBadgeIcon');
+      if (inp) inp.addEventListener('input', updateBadgeIconPreview);
+    });
+
+    function loadStatsForm() {
+      setVal('cfg_statsVisible', cfg.statsVisible !== false, true);
+      const ed = document.getElementById('statsEditor'); ed.innerHTML = '';
+      (cfg.stats || []).forEach((s, i) => {
+        ed.innerHTML +=
+          '<div class="edit-item-card">' +
+            '<div class="edit-item-header">' +
+              '<div class="edit-item-num">' + (i+1) + '</div>' +
+              '<div class="edit-item-title">Estadística ' + (i+1) + '</div>' +
+            '</div>' +
+            '<div class="form-row">' +
+              '<div class="form-group"><label class="form-label">Número / Valor</label><input type="text" id="stat_num_' + i + '" value="' + esc(s.num) + '" placeholder="Ej: 50+"></div>' +
+              '<div class="form-group"><label class="form-label">Etiqueta</label><input type="text" id="stat_label_' + i + '" value="' + esc(s.label) + '" placeholder="Proyectos Entregados"></div>' +
+            '</div>' +
+          '</div>';
+      });
+    }
+
+    function loadFeaturesForm() {
+      setVal('cfg_featuresVisible', cfg.featuresVisible !== false, true);
+      const ed = document.getElementById('featuresEditor'); ed.innerHTML = '';
+      (cfg.features || []).forEach((f, i) => {
+        ed.innerHTML +=
+          '<div class="edit-item-card">' +
+            '<div class="edit-item-header">' +
+              '<div class="edit-item-num">' + (i+1) + '</div>' +
+              '<div class="edit-item-title">' + esc(f.title) + '</div>' +
+              '<label class="toggle-switch"><input type="checkbox" id="feat_vis_' + i + '"' + (f.visible !== false ? ' checked' : '') + '><span class="toggle-slider"></span></label>' +
+            '</div>' +
+            '<div class="form-row">' +
+              '<div class="form-group"><label class="form-label">Ícono (FontAwesome)</label><input type="text" id="feat_icon_' + i + '" value="' + esc(f.icon) + '" placeholder="fas fa-mobile-alt"></div>' +
+              '<div class="form-group"><label class="form-label">Título</label><input type="text" id="feat_title_' + i + '" value="' + esc(f.title) + '"></div>' +
+            '</div>' +
+            '<div class="form-group"><label class="form-label">Descripción</label><textarea id="feat_desc_' + i + '" style="min-height:60px">' + esc(f.desc) + '</textarea></div>' +
+          '</div>';
+      });
+    }
+
+    function loadProcessForm() {
+      setVal('cfg_processVisible', cfg.processVisible !== false, true);
+      const ed = document.getElementById('processEditor'); ed.innerHTML = '';
+      (cfg.steps || []).forEach((s, i) => {
+        ed.innerHTML +=
+          '<div class="edit-item-card">' +
+            '<div class="edit-item-header">' +
+              '<div class="edit-item-num">' + (i+1) + '</div>' +
+              '<div class="edit-item-title">' + esc(s.title) + '</div>' +
+              '<label class="toggle-switch"><input type="checkbox" id="step_vis_' + i + '"' + (s.visible !== false ? ' checked' : '') + '><span class="toggle-slider"></span></label>' +
+            '</div>' +
+            '<div class="form-group"><label class="form-label">Título del Paso</label><input type="text" id="step_title_' + i + '" value="' + esc(s.title) + '"></div>' +
+            '<div class="form-group"><label class="form-label">Descripción</label><textarea id="step_desc_' + i + '" style="min-height:60px">' + esc(s.desc) + '</textarea></div>' +
+          '</div>';
+      });
+    }
+
+    function loadCtaForm() {
+      const c = cfg;
+      setVal('cfg_ctaVisible', c.ctaVisible !== false, true);
+      setVal('cfg_ctaTitle', c.ctaTitle);
+      setVal('cfg_ctaDesc', c.ctaDesc);
+      setVal('cfg_ctaBtn1Text', c.ctaBtn1Text);
+      setVal('cfg_ctaBtn2Text', c.ctaBtn2Text);
+      setVal('cfg_ctaBtn2Link', c.ctaBtn2Link);
+    }
+
+    function loadCategoriesForm() {
+      const ed = document.getElementById('categoriesEditor');
+      ed.innerHTML = '';
+      const cats = cfg.categories || [{value:'pagina',label:'Página Web'},{value:'diseno',label:'Diseño Digital'}];
+      cats.forEach((cat, i) => {
+        const div = document.createElement('div');
+        div.className = 'edit-item-card cat-row';
+        div.style.cssText = 'display:flex;align-items:center;gap:10px;padding:12px 14px';
+        div.innerHTML =
+          '<div class="edit-item-num" style="flex-shrink:0">' + (i+1) + '</div>' +
+          '<input type="text" class="cat-value" value="' + esc(cat.value) + '" placeholder="clave (sin espacios)" style="flex:1">' +
+          '<input type="text" class="cat-label" value="' + esc(cat.label) + '" placeholder="Nombre visible" style="flex:2">' +
+          '<button onclick="this.closest(\'.cat-row\').remove()" style="flex-shrink:0;padding:8px 12px;background:rgba(204,51,51,0.1);border:1px solid rgba(204,51,51,0.3);color:#cc3333;border-radius:8px;cursor:pointer;font-size:0.8rem;font-family:\'DM Sans\',sans-serif"><i class="fas fa-trash"></i></button>';
+        ed.appendChild(div);
+      });
+      // Update tipo select in product form with current categories
+      updateTipoSelect();
+    }
+
+    function addCategory() {
+      const ed = document.getElementById('categoriesEditor');
+      const i = ed.querySelectorAll('.cat-row').length;
+      const div = document.createElement('div');
+      div.className = 'edit-item-card cat-row';
+      div.style.cssText = 'display:flex;align-items:center;gap:10px;padding:12px 14px';
+      div.innerHTML =
+        '<div class="edit-item-num" style="flex-shrink:0">' + (i+1) + '</div>' +
+        '<input type="text" class="cat-value" placeholder="clave (ej: ecommerce)" style="flex:1">' +
+        '<input type="text" class="cat-label" placeholder="Nombre visible (ej: Tienda Online)" style="flex:2">' +
+        '<button onclick="this.closest(\'.cat-row\').remove()" style="flex-shrink:0;padding:8px 12px;background:rgba(204,51,51,0.1);border:1px solid rgba(204,51,51,0.3);color:#cc3333;border-radius:8px;cursor:pointer;font-size:0.8rem;font-family:\'DM Sans\',sans-serif"><i class="fas fa-trash"></i></button>';
+      ed.appendChild(div);
+    }
+
+    function updateTipoSelect() {
+      const sel = document.getElementById('tipo');
+      if (!sel) return;
+      const cats = cfg.categories || [{value:'pagina',label:'Página Web'},{value:'diseno',label:'Diseño Digital'}];
+      const current = sel.value;
+      sel.innerHTML = cats.map(c => '<option value="' + esc(c.value) + '"' + (c.value===current?' selected':'') + '>' + esc(c.label) + '</option>').join('');
+    }
+
+    function getCategoryLabel(value) {
+      const cats = cfg.categories || [{value:'pagina',label:'Página Web'},{value:'diseno',label:'Diseño Digital'}];
+      const found = cats.find(c => c.value === value);
+      return found ? found.label : (value === 'diseno' ? 'Diseño Digital' : 'Página Web');
+    }
+
+    function loadMarqueeForm() {
+      const m = cfg.marquee || {};
+      document.getElementById('mqActive').checked = !!m.active;
+      document.getElementById('mqText').value = m.text || '⚡ Oferta especial | 🚀 Nuevos productos | 📞 Contáctanos hoy';
+      document.getElementById('mqSeparator').value = m.separator || 'fas fa-diamond';
+      document.getElementById('mqSpeed').value = m.speed || 25;
+      document.getElementById('mqEffect').value = m.effect || 'scroll';
+      document.getElementById('mqPosition').value = m.position || 'fixed-top';
+      document.getElementById('mqBgColor').value = m.bgColor || '#00d4ff';
+      document.getElementById('mqTextColor').value = m.textColor || '#000000';
+      document.getElementById('mqFontSize').value = m.fontSize || '0.85rem';
+    }
+
+    function applyMarquee() {
+      const m = cfg.marquee || {};
+      const ribbon = document.getElementById('marqueeRibbon');
+      // Remove from any previous position container
+      document.querySelectorAll('.marquee-slot').forEach(el => el.innerHTML = '');
+      // Remove fixed positioning classes
+      ribbon.className = 'marquee-ribbon';
+      ribbon.style.cssText = '';
+
+      if (!m.active) { ribbon.style.display = 'none'; return; }
+
+      const items = (m.text || '').split('|').map(s => s.trim()).filter(Boolean);
+      const sep = m.separator || '';
+      const sepIsFA = sep.startsWith('fas ') || sep.startsWith('fab ') || sep.startsWith('far ') || sep.startsWith('fal ') || sep.startsWith('fa-');
+      const sepHtml = sepIsFA ? '<i class="' + sep + '"></i>' : sep;
+
+      // Build double content for seamless loop
+      let inner = items.map(item => '<span>' + item + ' ' + sepHtml + '</span>').join('');
+      inner = inner + inner; // doubled for infinite scroll
+
+      const speed = m.speed || 25;
+      const bgColor = m.bgColor || '#00d4ff';
+      const textColor = m.textColor || '#000000';
+      const fontSize = m.fontSize || '0.85rem';
+      const effect = m.effect || 'scroll';
+
+      ribbon.style.display = 'block';
+      ribbon.style.background = bgColor;
+      ribbon.style.color = textColor;
+      ribbon.style.fontSize = fontSize;
+      ribbon.style.padding = '9px 0';
+      ribbon.style.setProperty('--marquee-bg', bgColor);
+
+      if (effect === 'fade') ribbon.classList.add('effect-fade');
+      if (effect === 'wave') ribbon.classList.add('effect-wave');
+
+      ribbon.innerHTML = '<div class="marquee-ribbon-inner" style="animation:marqueeScroll ' + speed + 's linear infinite">' + inner + '</div>';
+
+      // Position
+      const pos = m.position || 'fixed-top';
+      const heroSection = document.getElementById('heroSection');
+      const productsSection = document.getElementById('productos');
+
+      if (pos === 'fixed-top') {
+        ribbon.style.position = 'fixed';
+        ribbon.style.top = '68px';
+        ribbon.style.left = '0'; ribbon.style.right = '0';
+        ribbon.style.zIndex = '998';
+        document.body.appendChild(ribbon); // ensure in body
+        // adjust body top padding
+        document.body.style.paddingTop = '30px';
+      } else if (pos === 'fixed-bottom') {
+        ribbon.style.position = 'fixed';
+        ribbon.style.bottom = '0';
+        ribbon.style.left = '0'; ribbon.style.right = '0';
+        ribbon.style.zIndex = '998';
+        document.body.appendChild(ribbon);
+        document.body.style.paddingTop = '';
+      } else if (pos === 'after-hero') {
+        ribbon.style.position = 'relative';
+        ribbon.style.zIndex = '2';
+        document.body.style.paddingTop = '';
+        if (heroSection && heroSection.nextSibling) {
+          heroSection.parentNode.insertBefore(ribbon, heroSection.nextSibling);
+        }
+      } else if (pos === 'above-products') {
+        ribbon.style.position = 'relative';
+        ribbon.style.zIndex = '2';
+        document.body.style.paddingTop = '';
+        if (productsSection) {
+          productsSection.parentNode.insertBefore(ribbon, productsSection);
+        }
+      }
+    }
+
+    /* ═══════════════ APPLY BANNER ═══════════════ */
+    function applyBanner() {
+      const b = cfg.banner || {};
+      const el = document.getElementById('annBanner');
+      if (!b.active) {
+        el.style.display = 'none';
+        document.body.classList.remove('has-ann-top','has-ann-bottom');
+        document.querySelector('header').style.top = '';
+        return;
+      }
+      el.style.display = 'flex';
+      el.style.background = b.bgColor || '#00d4ff';
+      el.style.color = b.textColor || '#000000';
+      document.getElementById('annBannerText').textContent = b.text || '';
+      const btn = document.getElementById('annBannerBtn');
+      if (b.btnText) {
+        btn.textContent = b.btnText;
+        btn.href = b.btnLink || '#';
+        btn.style.display = 'inline-flex';
+        btn.style.color = b.textColor || '#000';
+        btn.style.borderColor = b.textColor || '#000';
+      } else { btn.style.display = 'none'; }
+      const closeBtn = document.getElementById('annBannerClose');
+      closeBtn.style.display = b.closeable === 'no' ? 'none' : 'inline-flex';
+      el.className = 'ann-banner pos-' + (b.position || 'top');
+      if (b.position === 'bottom') {
+        document.body.classList.add('has-ann-bottom');
+        document.body.classList.remove('has-ann-top');
+        document.querySelector('header').style.top = '';
+      } else {
+        document.body.classList.add('has-ann-top');
+        document.body.classList.remove('has-ann-bottom');
+        requestAnimationFrame(() => {
+          const bannerH = el.offsetHeight || 42;
+          document.querySelector('header').style.top = bannerH + 'px';
+          // Also push mobile nav down
+          const mobileNav = document.getElementById('mobileNav');
+          if (mobileNav) mobileNav.style.top = (68 + bannerH) + 'px';
+        });
+      }
+    }
+
+    function closeAnnBanner() {
+      document.getElementById('annBanner').style.display = 'none';
+      document.body.classList.remove('has-ann-top','has-ann-bottom');
+      document.querySelector('header').style.top = '';
+      const mobileNav = document.getElementById('mobileNav');
+      if (mobileNav) mobileNav.style.top = '';
+    }
+
+    /* ═══════════════ APPLY POPUP ═══════════════ */
+    function applyPopup() {
+      const p = cfg.popup || {};
+      if (!p.active) return;
+      if (p.frequency === 'once' && localStorage.getItem('medallopack_popup_shown')) return;
+      if (p.frequency === 'session' && sessionStorage.getItem('medallopack_popup_shown')) return;
+      const delay = (parseInt(p.delay) || 0) * 1000;
+      setTimeout(() => {
+        _showPopup();
+        if (p.frequency === 'once') localStorage.setItem('medallopack_popup_shown', '1');
+        else if (p.frequency === 'session') sessionStorage.setItem('medallopack_popup_shown', '1');
+      }, delay);
+    }
+
+    function _showPopup() {
+      const p = cfg.popup || {};
+      document.getElementById('popupBadge').textContent = p.badge || '📢 Anuncio';
+      document.getElementById('popupTitle').textContent = p.title || '';
+      document.getElementById('popupMsg').textContent = p.msg || '';
+      const imgWrap = document.getElementById('popupImgWrap');
+      if (p.imgUrl) { document.getElementById('popupImg').src = p.imgUrl; imgWrap.style.display = 'block'; }
+      else { imgWrap.style.display = 'none'; }
+      const btn = document.getElementById('popupBtn');
+      if (p.btnText) {
+        btn.textContent = p.btnText; btn.href = p.btnLink || '#';
+        btn.style.display = 'inline-flex';
+        btn.onclick = () => closePopup();
+      } else { btn.style.display = 'none'; }
+      // Countdown
+      if (_cdInterval) clearInterval(_cdInterval);
+      if (p.countdownTarget) {
+        startCountdown(p.countdownTarget);
+      } else {
+        const cd = document.getElementById('popupCountdown');
+        if (cd) cd.style.display = 'none';
+      }
+      document.getElementById('popupOverlay').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePopup() {
+      document.getElementById('popupOverlay').classList.remove('show');
+      document.body.style.overflow = '';
+      if (_cdInterval) { clearInterval(_cdInterval); _cdInterval = null; }
+    }
+
+    /* ═══════════════ LOAD ANUNCIOS FORM ═══════════════ */
+    function loadAnunciosForm() {
+      const b = cfg.banner || {};
+      const p = cfg.popup || {};
+      setVal('bannerActive', !!b.active, true);
+      setVal('bannerText', b.text);
+      setVal('bannerBtnText', b.btnText);
+      setVal('bannerBtnLink', b.btnLink);
+      setVal('bannerPosition', b.position || 'top');
+      setVal('bannerCloseable', b.closeable || 'yes');
+      setVal('bannerBgColor', b.bgColor || '#00d4ff');
+      setVal('bannerTextColor', b.textColor || '#000000');
+      setVal('popupActive', !!p.active, true);
+      setVal('popupBadgeText', p.badge);
+      setVal('popupTitleInput', p.title);
+      setVal('popupMsgInput', p.msg);
+      setVal('popupImgUrl', p.imgUrl);
+      setVal('popupBtnText', p.btnText);
+      setVal('popupBtnLink', p.btnLink);
+      setVal('popupDelay', p.delay !== undefined ? p.delay : 2);
+      setVal('popupFrequency', p.frequency || 'session');
+      setVal('popupCountdownTarget', p.countdownTarget || '');
+    }
+
+    function loadConfigForm() {
+      const c = cfg;
+      setVal('cfg_brandName', c.brandName);
+      setVal('cfg_brandInitials', c.brandInitials);
+      setVal('cfg_whatsapp', c.whatsapp);
+      setVal('cfg_footerSub', c.footerSub);
+      setVal('cfg_instagram', c.instagram || '');
+      setVal('cfg_facebook', c.facebook || '');
+      setVal('cfg_waLink', c.waLink || '');
+      setVal('cfg_tiktok', c.tiktok || '');
+      setVal('cfg_linkedin', c.linkedin || '');
+      setVal('cfg_youtube', c.youtube || '');
+      setVal('cfg_twitter', c.twitter || '');
+      // Show logo preview
+      const box = document.getElementById('logoPreviewBox');
+      if (box) {
+        if (c.logoImg) {
+          box.innerHTML = '<img src="' + c.logoImg + '" alt="Logo" style="width:100%;height:100%;object-fit:contain">';
+          box.style.background = 'transparent';
+          box.style.border = '1px solid rgba(255,255,255,0.12)';
+        } else {
+          box.innerHTML = c.brandInitials || 'MP';
+          box.style.background = 'linear-gradient(135deg,var(--primary),var(--accent))';
+        }
+      }
+    }
+
+    function previewLogo(input) {
+      if (!input.files || !input.files[0]) return;
+      const r = new FileReader();
+      r.onload = e => {
+        const box = document.getElementById('logoPreviewBox');
+        if (box) {
+          box.innerHTML = '<img src="' + e.target.result + '" alt="Logo" style="width:100%;height:100%;object-fit:contain">';
+          box.style.background = 'transparent';
+          box.style.border = '1px solid rgba(255,255,255,0.12)';
+        }
+        // Store temporarily
+        window._pendingLogo = e.target.result;
+      };
+      r.readAsDataURL(input.files[0]);
+    }
+
+    function removeLogo() {
+      cfg.logoImg = '';
+      window._pendingLogo = null;
+      const box = document.getElementById('logoPreviewBox');
+      if (box) {
+        box.innerHTML = cfg.brandInitials || 'MP';
+        box.style.background = 'linear-gradient(135deg,var(--primary),var(--accent))';
+        box.style.border = '';
+      }
+      const input = document.getElementById('cfg_logoFile');
+      if (input) input.value = '';
+      localStorage.setItem('medallopack_config', JSON.stringify(cfg));
+      applyConfig();
+      showToast('🖼️ Logo eliminado');
+    }
+
+    function setVal(id, val, isCheckbox) {
+      const el = document.getElementById(id); if (!el) return;
+      if (isCheckbox) el.checked = val; else el.value = val || '';
+    }
+    function getVal(id, isCheckbox) {
+      const el = document.getElementById(id); if (!el) return isCheckbox ? false : '';
+      return isCheckbox ? el.checked : el.value;
+    }
+
+    /* ═══════════════ SAVE SECTIONS ═══════════════ */
+    function saveSection(section) {
+      if (section === 'hero') {
+        cfg.heroVisible = getVal('cfg_heroVisible', true);
+        cfg.heroBadge = getVal('cfg_heroBadge');
+        cfg.heroBadgeIcon = getVal('cfg_heroBadgeIcon');
+        cfg.heroTitle = getVal('cfg_heroTitle');
+        cfg.heroSubtitle = getVal('cfg_heroSubtitle');
+        cfg.heroBtn1Text = getVal('cfg_heroBtn1Text');
+        cfg.heroBtn1Link = getVal('cfg_heroBtn1Link');
+        cfg.heroBtn2Text = getVal('cfg_heroBtn2Text');
+        cfg.heroBtn2Link = getVal('cfg_heroBtn2Link');
+      } else if (section === 'stats') {
+        cfg.statsVisible = getVal('cfg_statsVisible', true);
+        cfg.stats = (cfg.stats || []).map((s, i) => ({
+          num: getVal('stat_num_' + i),
+          label: getVal('stat_label_' + i)
+        }));
+      } else if (section === 'features') {
+        cfg.featuresVisible = getVal('cfg_featuresVisible', true);
+        cfg.features = (cfg.features || []).map((f, i) => ({
+          icon: getVal('feat_icon_' + i),
+          title: getVal('feat_title_' + i),
+          desc: getVal('feat_desc_' + i),
+          visible: getVal('feat_vis_' + i, true)
+        }));
+      } else if (section === 'process') {
+        cfg.processVisible = getVal('cfg_processVisible', true);
+        cfg.steps = (cfg.steps || []).map((s, i) => ({
+          title: getVal('step_title_' + i),
+          desc: getVal('step_desc_' + i),
+          visible: getVal('step_vis_' + i, true)
+        }));
+      } else if (section === 'cta') {
+        cfg.ctaVisible = getVal('cfg_ctaVisible', true);
+        cfg.ctaTitle = getVal('cfg_ctaTitle');
+        cfg.ctaDesc = getVal('cfg_ctaDesc');
+        cfg.ctaBtn1Text = getVal('cfg_ctaBtn1Text');
+        cfg.ctaBtn2Text = getVal('cfg_ctaBtn2Text');
+        cfg.ctaBtn2Link = getVal('cfg_ctaBtn2Link');
+      } else if (section === 'categories') {
+        const rows = document.querySelectorAll('#categoriesEditor .cat-row');
+        cfg.categories = Array.from(rows).map(row => ({
+          value: row.querySelector('.cat-value').value.trim().toLowerCase().replace(/\s+/g,'-') || 'otro',
+          label: row.querySelector('.cat-label').value.trim() || 'Otro'
+        })).filter(c => c.value);
+        localStorage.setItem('medallopack_config', JSON.stringify(cfg));
+        updateTipoSelect();
+        renderCategoryFilters();
+        showToast('✅ Categorías guardadas');
+        return;
+      } else if (section === 'marquee') {
+        if (!cfg.marquee) cfg.marquee = {};
+        cfg.marquee.active = getVal('mqActive', true);
+        cfg.marquee.text = getVal('mqText');
+        cfg.marquee.separator = getVal('mqSeparator');
+        cfg.marquee.speed = parseInt(getVal('mqSpeed')) || 25;
+        cfg.marquee.effect = getVal('mqEffect');
+        cfg.marquee.position = getVal('mqPosition');
+        cfg.marquee.bgColor = getVal('mqBgColor');
+        cfg.marquee.textColor = getVal('mqTextColor');
+        cfg.marquee.fontSize = getVal('mqFontSize');
+      } else if (section === 'config') {
+        cfg.brandName = getVal('cfg_brandName');
+        cfg.brandInitials = getVal('cfg_brandInitials');
+        cfg.whatsapp = getVal('cfg_whatsapp');
+        cfg.footerSub = getVal('cfg_footerSub');
+        cfg.instagram = getVal('cfg_instagram');
+        cfg.facebook = getVal('cfg_facebook');
+        cfg.waLink = getVal('cfg_waLink');
+        cfg.tiktok = getVal('cfg_tiktok');
+        cfg.linkedin = getVal('cfg_linkedin');
+        cfg.youtube = getVal('cfg_youtube');
+        cfg.twitter = getVal('cfg_twitter');
+        // Logo image
+        if (window._pendingLogo) {
+          cfg.logoImg = window._pendingLogo;
+          window._pendingLogo = null;
+        }
+      } else if (section === 'testimonials') {
+        if (!cfg.testimonials) cfg.testimonials = {};
+        cfg.testimonials.visible = getVal('cfg_testimonialsVisible', true);
+        cfg.testimonials.title = getVal('cfg_testimonialsTitle');
+        const rows = document.querySelectorAll('#testimonialsEditor .test-row');
+        cfg.testimonials.items = Array.from(rows).map(r => ({
+          nombre: r.querySelector('.test-nombre').value,
+          cargo: r.querySelector('.test-cargo').value,
+          texto: r.querySelector('.test-texto').value,
+          estrellas: parseInt(r.querySelector('.test-stars').value) || 5,
+          visible: r.querySelector('.test-visible').checked
+        }));
+        localStorage.setItem('medallopack_config', JSON.stringify(cfg));
+        applyConfig(); initReveal();
+        showToast('✅ Testimonios guardados'); return;
+      } else if (section === 'faq') {
+        if (!cfg.faq) cfg.faq = {};
+        cfg.faq.visible = getVal('cfg_faqVisible', true);
+        cfg.faq.title = getVal('cfg_faqTitle');
+        const rows = document.querySelectorAll('#faqEditor .faq-row');
+        cfg.faq.items = Array.from(rows).map(r => ({
+          pregunta: r.querySelector('.faq-preg').value,
+          respuesta: r.querySelector('.faq-resp').value,
+          visible: r.querySelector('.faq-vis').checked
+        }));
+        localStorage.setItem('medallopack_config', JSON.stringify(cfg));
+        applyConfig(); initReveal();
+        showToast('✅ FAQ guardado'); return;
+      } else if (section === 'seo') {
+        if (!cfg.seo) cfg.seo = {};
+        cfg.seo.metaTitle = getVal('seo_metaTitle');
+        cfg.seo.metaDesc = getVal('seo_metaDesc');
+        cfg.seo.metaKeywords = getVal('seo_keywords');
+        cfg.seo.ogTitle = getVal('seo_ogTitle');
+        cfg.seo.ogDesc = getVal('seo_ogDesc');
+        cfg.seo.ogImage = getVal('seo_ogImage');
+        cfg.seo.gaId = getVal('seo_gaId');
+        cfg.seo.fbPixel = getVal('seo_fbPixel');
+        if (!cfg.videoSection) cfg.videoSection = {};
+        cfg.videoSection.visible = getVal('cfg_videoVisible', true);
+        cfg.videoSection.title = getVal('cfg_videoTitle');
+        cfg.videoSection.subtitle = getVal('cfg_videoSubtitle');
+        cfg.videoSection.youtubeUrl = getVal('cfg_videoUrl');
+      } else if (section === 'anuncios') {
+        if (!cfg.banner) cfg.banner = {};
+        cfg.banner.active = getVal('bannerActive', true);
+        cfg.banner.text = getVal('bannerText');
+        cfg.banner.btnText = getVal('bannerBtnText');
+        cfg.banner.btnLink = getVal('bannerBtnLink');
+        cfg.banner.position = getVal('bannerPosition');
+        cfg.banner.closeable = getVal('bannerCloseable');
+        cfg.banner.bgColor = getVal('bannerBgColor');
+        cfg.banner.textColor = getVal('bannerTextColor');
+        if (!cfg.popup) cfg.popup = {};
+        cfg.popup.active = getVal('popupActive', true);
+        cfg.popup.badge = getVal('popupBadgeText');
+        cfg.popup.title = getVal('popupTitleInput');
+        cfg.popup.msg = getVal('popupMsgInput');
+        cfg.popup.imgUrl = getVal('popupImgUrl');
+        cfg.popup.btnText = getVal('popupBtnText');
+        cfg.popup.btnLink = getVal('popupBtnLink');
+        cfg.popup.delay = parseInt(getVal('popupDelay')) || 0;
+        cfg.popup.frequency = getVal('popupFrequency');
+        cfg.popup.countdownTarget = getVal('popupCountdownTarget');
+        // Reset popup shown flags so it re-triggers on next visit if active
+        sessionStorage.removeItem('medallopack_popup_shown');
+      }
+      localStorage.setItem('medallopack_config', JSON.stringify(cfg));
+      applyConfig();
+      showToast('✅ Cambios guardados y aplicados');
+    }
+
+    /* ═══════════════ LOGOUT ═══════════════ */
+    function logoutAdmin() { document.getElementById('adminPanel').style.display = 'none'; }
+
+    /* ═══════════════ SECRET ADMIN (3 clicks copyright) ═══════════════ */
+    let clickCount = 0, clickTimer;
+    document.getElementById('copyright').addEventListener('click', () => {
+      clickCount++;
+      clearTimeout(clickTimer);
+      clickTimer = setTimeout(() => { clickCount = 0; }, 2000);
+      if (clickCount >= 3) {
+        clickCount = 0;
+        const user = prompt('Usuario del panel:');
+        const pass = prompt('Contraseña:');
+        if (user === ADMIN_USER && pass === ADMIN_PASS) {
+          document.getElementById('adminPanel').style.display = 'block';
+          renderAdminProducts();
+        } else { showToast('❌ Credenciales incorrectas'); }
+      }
+    });
+
+    /* ═══════════════ VIEW TOGGLE (grid/list) ═══════════════ */
+    let currentView = 'grid';
+    function setView(mode) {
+      currentView = mode;
+      const grid = document.getElementById('product-grid');
+      const btnGrid = document.getElementById('btnViewGrid');
+      const btnList = document.getElementById('btnViewList');
+      if (mode === 'list') {
+        grid.classList.add('list-view');
+        btnList.classList.add('active'); btnGrid.classList.remove('active');
+      } else {
+        grid.classList.remove('list-view');
+        btnGrid.classList.add('active'); btnList.classList.remove('active');
+      }
+    }
+
+    /* ═══════════════ FAQ ACCORDION ═══════════════ */
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    /* ═══════════════ COUNTDOWN TIMER IN POPUP ═══════════════ */
+    let _cdInterval = null;
+    function startCountdown(target) {
+      const wrap = document.getElementById('popupCountdown');
+      if (!target || !wrap) return;
+      const end = new Date(target).getTime();
+      if (isNaN(end)) return;
+      wrap.style.display = 'flex';
+      function tick() {
+        const now = Date.now();
+        const diff = end - now;
+        if (diff <= 0) {
+          clearInterval(_cdInterval);
+          ['cdDays','cdHours','cdMins','cdSecs'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = '00'; });
+          return;
+        }
+        const d = Math.floor(diff/86400000);
+        const h = Math.floor((diff%86400000)/3600000);
+        const m = Math.floor((diff%3600000)/60000);
+        const s = Math.floor((diff%60000)/1000);
+        const pad = n => String(n).padStart(2,'0');
+        document.getElementById('cdDays').textContent = pad(d);
+        document.getElementById('cdHours').textContent = pad(h);
+        document.getElementById('cdMins').textContent = pad(m);
+        document.getElementById('cdSecs').textContent = pad(s);
+      }
+      tick();
+      _cdInterval = setInterval(tick, 1000);
+    }
+
+    /* ═══════════════ LOAD TESTIMONIALS FORM ═══════════════ */
+    function loadTestimonialsForm() {
+      const t = cfg.testimonials || {};
+      setVal('cfg_testimonialsVisible', t.visible !== false, true);
+      setVal('cfg_testimonialsTitle', t.title || '');
+      renderTestimonialsEditor(t.items || []);
+    }
+    function renderTestimonialsEditor(items) {
+      const ed = document.getElementById('testimonialsEditor'); ed.innerHTML = '';
+      items.forEach((t, i) => {
+        const div = document.createElement('div'); div.className = 'edit-item-card test-row';
+        div.innerHTML =
+          '<div class="edit-item-header"><div class="edit-item-num">' + (i+1) + '</div>' +
+          '<div class="edit-item-title">' + esc(t.nombre || 'Testimonio ' + (i+1)) + '</div>' +
+          '<label class="toggle-switch"><input type="checkbox" class="test-visible"' + (t.visible !== false?' checked':'') + '><span class="toggle-slider"></span></label>' +
+          '<button onclick="this.closest(\'.test-row\').remove()" style="background:rgba(204,51,51,0.1);border:1px solid rgba(204,51,51,0.2);color:#cc3333;border-radius:8px;padding:5px 9px;cursor:pointer;font-size:0.78rem;font-family:\'DM Sans\',sans-serif"><i class="fas fa-trash"></i></button></div>' +
+          '<div class="form-row"><div class="form-group"><label class="form-label">Nombre</label><input type="text" class="test-nombre" value="' + esc(t.nombre) + '" placeholder="Juan Pérez"></div>' +
+          '<div class="form-group"><label class="form-label">Cargo / Empresa</label><input type="text" class="test-cargo" value="' + esc(t.cargo) + '" placeholder="Empresario · Medellín"></div></div>' +
+          '<div class="form-group"><label class="form-label">Testimonio</label><textarea class="test-texto" style="min-height:70px">' + esc(t.texto) + '</textarea></div>' +
+          '<div class="form-group"><label class="form-label">Estrellas</label><select class="test-stars">' +
+          [5,4,3,2,1].map(n => '<option value="'+n+'"'+(n===(t.estrellas||5)?' selected':'')+'>'+n+' estrellas</option>').join('') +
+          '</select></div>';
+        ed.appendChild(div);
+      });
+    }
+    function addTestimonial() {
+      const items = Array.from(document.querySelectorAll('#testimonialsEditor .test-row')).map(r => ({
+        nombre: r.querySelector('.test-nombre').value,
+        cargo: r.querySelector('.test-cargo').value,
+        texto: r.querySelector('.test-texto').value,
+        estrellas: parseInt(r.querySelector('.test-stars').value) || 5,
+        visible: r.querySelector('.test-visible').checked
+      }));
+      items.push({nombre:'', cargo:'', texto:'', estrellas:5, visible:true});
+      renderTestimonialsEditor(items);
+    }
+
+    /* ═══════════════ LOAD FAQ FORM ═══════════════ */
+    function loadFaqForm() {
+      const f = cfg.faq || {};
+      setVal('cfg_faqVisible', f.visible !== false, true);
+      setVal('cfg_faqTitle', f.title || '');
+      renderFaqEditor(f.items || []);
+    }
+    function renderFaqEditor(items) {
+      const ed = document.getElementById('faqEditor'); ed.innerHTML = '';
+      items.forEach((f, i) => {
+        const div = document.createElement('div'); div.className = 'edit-item-card faq-row';
+        div.innerHTML =
+          '<div class="edit-item-header"><div class="edit-item-num">' + (i+1) + '</div>' +
+          '<div class="edit-item-title">' + esc(f.pregunta || 'Pregunta ' + (i+1)) + '</div>' +
+          '<label class="toggle-switch"><input type="checkbox" class="faq-vis"' + (f.visible !== false?' checked':'') + '><span class="toggle-slider"></span></label>' +
+          '<button onclick="this.closest(\'.faq-row\').remove()" style="background:rgba(204,51,51,0.1);border:1px solid rgba(204,51,51,0.2);color:#cc3333;border-radius:8px;padding:5px 9px;cursor:pointer;font-size:0.78rem;font-family:\'DM Sans\',sans-serif"><i class="fas fa-trash"></i></button></div>' +
+          '<div class="form-group"><label class="form-label">Pregunta</label><input type="text" class="faq-preg" value="' + esc(f.pregunta) + '" placeholder="¿Cuánto tiempo tarda?"></div>' +
+          '<div class="form-group"><label class="form-label">Respuesta</label><textarea class="faq-resp" style="min-height:70px">' + esc(f.respuesta) + '</textarea></div>';
+        ed.appendChild(div);
+      });
+    }
+    function addFaq() {
+      const items = Array.from(document.querySelectorAll('#faqEditor .faq-row')).map(r => ({
+        pregunta: r.querySelector('.faq-preg').value,
+        respuesta: r.querySelector('.faq-resp').value,
+        visible: r.querySelector('.faq-vis').checked
+      }));
+      items.push({pregunta:'', respuesta:'', visible:true});
+      renderFaqEditor(items);
+    }
+
+    /* ═══════════════ LOAD SEO FORM ═══════════════ */
+    function loadSeoForm() {
+      const s = cfg.seo || {};
+      const v = cfg.videoSection || {};
+      setVal('seo_metaTitle', s.metaTitle || '');
+      setVal('seo_metaDesc', s.metaDesc || '');
+      setVal('seo_keywords', s.metaKeywords || '');
+      setVal('seo_ogTitle', s.ogTitle || '');
+      setVal('seo_ogDesc', s.ogDesc || '');
+      setVal('seo_ogImage', s.ogImage || '');
+      setVal('seo_gaId', s.gaId || '');
+      setVal('seo_fbPixel', s.fbPixel || '');
+      setVal('cfg_videoVisible', v.visible === true, true);
+      setVal('cfg_videoTitle', v.title || '');
+      setVal('cfg_videoSubtitle', v.subtitle || '');
+      setVal('cfg_videoUrl', v.youtubeUrl || '');
+    }
+
+    /* ═══════════════ EXPORT / IMPORT CONFIG ═══════════════ */
+    function exportConfig() {
+      const data = JSON.stringify({config: cfg, productos: productos}, null, 2);
+      const blob = new Blob([data], {type:'application/json'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'medallopack-backup-' + new Date().toISOString().slice(0,10) + '.json';
+      a.click(); URL.revokeObjectURL(a.href);
+      showToast('📥 Backup exportado');
+    }
+    function importConfig(input) {
+      if (!input.files || !input.files[0]) return;
+      const r = new FileReader();
+      r.onload = e => {
+        try {
+          const data = JSON.parse(e.target.result);
+          if (data.config) {
+            cfg = Object.assign({}, DEFAULT_CONFIG, data.config);
+            localStorage.setItem('medallopack_config', JSON.stringify(cfg));
+          }
+          if (data.productos) {
+            productos = data.productos;
+            localStorage.setItem('medallopack_productos', JSON.stringify(productos));
+          }
+          applyConfig(); renderProducts(); renderAdminProducts();
+          showToast('✅ Config importada correctamente');
+          input.value = '';
+        } catch(err) { showToast('❌ Archivo inválido'); }
+      };
+      r.readAsText(input.files[0]);
+    }
+
+    /* ═══════════════ KEYBOARD ═══════════════ */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { closeDemoModal(); closeBuyModal(); closeMenu(); closePopup(); }
+    });
+
+    /* ═══════════════ SCROLL TOOLS ═══════════════ */
+    const scrollProgress = document.getElementById('scrollProgress');
+    const backTop = document.getElementById('backTop');
+
+    function updateScrollTools() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      if (scrollProgress) scrollProgress.style.width = pct + '%';
+      if (backTop) backTop.classList.toggle('visible', scrollTop > 400);
+    }
+
+    window.addEventListener('scroll', updateScrollTools, { passive: true });
+    updateScrollTools();
+
+    /* ═══════════════ SCROLL REVEAL (IntersectionObserver) ═══════════════ */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    function initReveal() {
+      document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    }
+
+    /* ═══════════════ MOBILE BOTTOM BAR ═══════════════ */
+    function initMobileCTABar() {
+      const bar = document.getElementById('mobileCTABar');
+      if (!bar) return;
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        document.body.classList.add('has-mobile-bar');
+        const mcbWa = document.getElementById('mcbWa');
+        if (mcbWa) {
+          const waNum = cfg.whatsapp || '573001234567';
+          mcbWa.href = 'https://wa.me/' + waNum + '?text=' + encodeURIComponent('Hola, quiero más información sobre sus servicios');
+        }
+      }
+    }
+
+    /* ═══════════════ CATEGORY FILTER STICKY OFFSET ═══════════════ */
+    function updateCatStickyTop() {
+      const catWrap = document.getElementById('catFilterWrap');
+      if (!catWrap) return;
+      const headerH = document.querySelector('header') ? document.querySelector('header').offsetHeight : 68;
+      const annBanner = document.getElementById('annBanner');
+      const bannerH = (annBanner && annBanner.style.display !== 'none' && document.body.classList.contains('has-ann-top')) ? annBanner.offsetHeight : 0;
+      catWrap.style.top = (headerH + bannerH) + 'px';
+    }
+
+    /* ═══════════════ LAZY LOAD PRODUCT IMAGES ═══════════════ */
+    function lazyLoadImages() {
+      if ('IntersectionObserver' in window) {
+        const imgObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              if (img.dataset.src) {
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+              }
+              imgObserver.unobserve(img);
+            }
+          });
+        }, { rootMargin: '200px' });
+        document.querySelectorAll('img[data-src]').forEach(img => imgObserver.observe(img));
+      }
+    }
+
+    document.getElementById('popupOverlay').addEventListener('click', e => {
+      if (e.target === document.getElementById('popupOverlay')) closePopup();
+    });
+
+    /* ═══════════════ INIT ═══════════════ */
+    window.onload = () => {
+      if (productos.length === 0) {
+        productos = [{
+          id: 1, nombre: "Página Web Corporativa Premium",
+          descripcion: "Sitio web moderno, veloz y profesional optimizado para posicionar tu negocio en Medellín. Incluye diseño responsivo, SEO básico, formulario de contacto y hosting por 1 año.",
+          precioCOP: 1250000, precioUSD: "305", tipo: "pagina",
+          imagen: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
+          paypal: "https://paypal.me/tuusuario", wompi: "", tieneDemo: true,
+          demoHTML: '<!DOCTYPE html><html><head><title>Demo</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,sans-serif;background:#f8fafc;color:#1e293b}header{background:#0f172a;color:white;padding:16px 32px;display:flex;justify-content:space-between;align-items:center}.logo{font-weight:800;font-size:1.1rem}nav a{color:#94a3b8;text-decoration:none;margin-left:16px;font-size:0.85rem}.hero{padding:64px 32px;text-align:center;background:linear-gradient(135deg,#0f172a,#1e3a5f)}h1{font-size:2.4rem;color:white;margin-bottom:14px}.sub{color:#94a3b8;font-size:1rem;margin-bottom:28px}.btn{background:linear-gradient(90deg,#00d4ff,#ff8800);color:#000;padding:12px 28px;border:none;border-radius:10px;font-weight:700;cursor:pointer;font-size:0.95rem}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;padding:32px}@media(max-width:480px){.cards{grid-template-columns:1fr}nav{display:none}}.card{background:white;padding:20px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.07);text-align:center}.ci{font-size:1.8rem;margin-bottom:8px}h2{color:#0f172a;font-size:0.95rem;margin-bottom:5px}p{color:#64748b;font-size:.82rem}</style></head><body><header><span class="logo">Tu Empresa</span><nav><a href="#">Inicio</a><a href="#">Servicios</a><a href="#">Contacto</a></nav></header><div class="hero"><h1>🚀 Tu Negocio, Online</h1><p class="sub">Vista previa de tu futura página web profesional</p><button class="btn" onclick="alert(\'¡Demo de MedalloPack!\')">Comenzar Ahora</button></div><div class="cards"><div class="card"><div class="ci">📱</div><h2>Diseño Responsivo</h2><p>Perfecta en celular, tablet y PC</p></div><div class="card"><div class="ci">🔍</div><h2>SEO Optimizado</h2><p>Aparece en Google más rápido</p></div><div class="card"><div class="ci">⚡</div><h2>Alta Velocidad</h2><p>Carga en menos de 2 segundos</p></div></div></body></html>'
+        }];
+        localStorage.setItem('medallopack_productos', JSON.stringify(productos));
+      }
+      applyConfig();
+      renderProducts();
+      // New v5 tools
+      setTimeout(() => {
+        initReveal();
+        initMobileCTABar();
+        updateCatStickyTop();
+        lazyLoadImages();
+      }, 120);
+      // Re-run reveal after dynamic sections render
+      setTimeout(initReveal, 400);
+    };
+  </script>
+</body>
+</html>
